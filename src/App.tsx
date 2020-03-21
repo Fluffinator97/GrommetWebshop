@@ -1,21 +1,19 @@
 import React from 'react';
+import ProductList from './productList'
+import {ShopCart} from './ShopCart'
+import { CartProvider } from './context/cartContext';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CartProvider>
+        <div>
+          <ShopCart />
+          <ProductList />
+        </div>
+      </CartProvider>
     </div>
   );
 }
