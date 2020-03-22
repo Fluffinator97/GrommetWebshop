@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../src/context/cartContext';
+import React, { useContext } from 'react'
+import { CartContext } from '../src/context/cartContext'
 import Button from './AddToCartButton'
 
 interface Props{

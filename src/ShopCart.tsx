@@ -9,11 +9,10 @@ interface Props {
 }
 
 
-
 export const ShopCart = (props: Props) => {
     const [checkOut, setCheckOut] = useState(false)
-    const [cart, setCart] = useContext(CartContext)
-    const totalPrice = cart.reduce((acc: number, curr: { price: number; }) => acc + curr.price, 0)
+    const [cartItems, setCart] = useContext(CartContext)
+    const totalPrice = cartItems.reduce((acc: number, curr: { price: number; }) => acc + curr.price, 0)
 
     const renderRedirect = () => {
         if (checkOut) {
@@ -21,11 +20,11 @@ export const ShopCart = (props: Props) => {
         }
     }
 
-
     return (
         <>
             {renderRedirect()}
-            <span style={badgeStyle}>{cart.length}</span>
+            <span style={badgeStyle}>{cartItems.length}</span>
+    <span>{totalPrice}</span>
 
             <Button
                 icon={<Shop />}
