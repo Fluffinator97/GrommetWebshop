@@ -1,21 +1,28 @@
-import React from 'react'
-import Product from './product'
+import React, { Component } from "react";
+import Product from "./product";
+import { storeProducts } from "./data";
+import { ProductConsumer } from "./context/cartContext";
+export default class ProductList extends Component {
+  state = {
+    products: storeProducts
+  };
+  render() {
 
-export default function ProductList(){
-
-  const database = [
-    { name: "red tshirt", price: 10.99, id: 1 },
-    { name: "yellow hoodie", price: 24.99, id: 2 },
-    { name: "blue polo", price: 18.99, id: 3 },
-  ]
-
-  return (
-    <div>
-      {
-        database.map(item => (
-          <Product name={item.name} price={item.price} key={item.id} />
-        ))
-      }
-    </div>
-  )
+    return (
+      <React.Fragment>
+          <div className="container">
+            <div className="row">
+              <ProductConsumer>
+                {value => {
+                  return value.products.map(product => {
+                    return <Product key={product.id} product={product} />;
+                  });
+                }}
+              </ProductConsumer>
+            </div>
+          </div>
+      </React.Fragment>
+    );
+  }
 }
+

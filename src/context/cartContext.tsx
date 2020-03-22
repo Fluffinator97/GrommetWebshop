@@ -1,15 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
 import { storeProducts, detailProduct } from "../data";
 
-const startState: any[] = []
-const ProductContext = React.createContext(startState);
+const ProductContext = React.createContext<State>(
+    {
+        products: [],
+        detailProduct: detailProduct,
+        cart: [],
+        modalOpen: false,
+        modalProduct: detailProduct,
+        cartSubTotal: 0,
+        cartTax: 0,
+        cartTotal: 0,
+        handleDetail: () => { },
+        addToCart: () => { },
+        openModal: () => { },
+        closeModal: () => { },
+        increment: () => { },
+        decrement: () => { },
+        removeItem: () => { },
+        clearCart: () => { }
+
+    });
 
 interface Props {
 
 }
 interface State {
     products: any[],
-    detailProduct:  {
+    detailProduct: {
         id: number;
         title: string;
         img: string;
@@ -19,10 +37,10 @@ interface State {
         inCart: boolean;
         count: number;
         total: number;
-    } ,
+    },
     cart: any[],
     modalOpen: boolean,
-    modalProduct:  {
+    modalProduct: {
         id: number;
         title: string;
         img: string;
@@ -35,9 +53,18 @@ interface State {
     },
     cartSubTotal: number,
     cartTax: number,
-    cartTotal: number
+    cartTotal: number,
+    handleDetail: any,
+    addToCart: any,
+    openModal: any,
+    closeModal: any,
+    increment: any,
+    decrement: any,
+    removeItem: any,
+    clearCart: any
 }
-class ProductProvider extends React.Component<Props, State> {
+
+class ProductProvider extends Component<Props, State> {
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -48,7 +75,16 @@ class ProductProvider extends React.Component<Props, State> {
             modalProduct: detailProduct,
             cartSubTotal: 0,
             cartTax: 0,
-            cartTotal: 0
+            cartTotal: 0,
+            handleDetail: this.handleDetail,
+            addToCart: this.addToCart,
+            openModal: this.openModal,
+            closeModal: this.closeModal,
+            increment: this.increment,
+            decrement: this.decrement,
+            removeItem: this.removeItem,
+            clearCart: this.clearCart
+
         };
     }
     componentDidMount() {
@@ -69,15 +105,13 @@ class ProductProvider extends React.Component<Props, State> {
     getItem = (id: number) => {
         const product = this.state.products.find(item => item.id === id);
         return product;
-    }
-
+    };
     handleDetail = (id: number) => {
         const product = this.getItem(id);
         this.setState(() => {
             return { detailProduct: product };
         });
-    }
-
+    };
     addToCart = (id: number) => {
         let tempProducts = [...this.state.products];
         const index = tempProducts.indexOf(this.getItem(id));
@@ -95,7 +129,7 @@ class ProductProvider extends React.Component<Props, State> {
             };
         }, this.addTotals);
     };
-    openModal = (id: any) => {
+    openModal = (id: number) => {
         const product = this.getItem(id);
         this.setState(() => {
             return { modalProduct: product, modalOpen: true };
@@ -146,7 +180,7 @@ class ProductProvider extends React.Component<Props, State> {
         //     return acc;
         //   }, 0);
         let subTotal = 0;
-        this.state.cart.map((item: { total: number; }) => (subTotal += item.total));
+        this.state.cart.map(item => (subTotal += item.total));
         const tempTax = subTotal * 0.1;
         const tax = parseFloat(tempTax.toFixed(2));
         const total = subTotal + tax;
@@ -208,14 +242,7 @@ class ProductProvider extends React.Component<Props, State> {
             <ProductContext.Provider
                 value={{
                     ...this.state,
-                    handleDetail: this.handleDetail,
-                    addToCart: this.addToCart,
-                    openModal: this.openModal,
-                    closeModal: this.closeModal,
-                    increment: this.increment,
-                    decrement: this.decrement,
-                    removeItem: this.removeItem,
-                    clearCart: this.clearCart
+
                 }}
             >
                 {this.props.children}

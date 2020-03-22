@@ -1,26 +1,57 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../src/context/cartContext'
-import Button from './AddToCartButton'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { ProductConsumer } from "./context/cartContext";
 
-interface Props{
-name: string,
-price:number
+interface Props {
+  product: { id: number; title: string; img: string; price: number; inCart: boolean; }
 }
+export default class Product extends Component <Props>{
 
-export default function Product(props:Props){
-  const [cart, setCart] = useContext(CartContext);
-
-  const addToCart = () => {
-    const tshirt = { name: props.name, price: props.price };
-    setCart((currentState: any) => [...currentState, tshirt]);
+  render() {
+    const { id, title, img, price, inCart } = this.props.product;
+    return (
+      <>
+        <div className="card">
+          <ProductConsumer>
+            {value => {
+              return (
+                <div
+                  className="img-container p-5"
+                  onClick={() => value.handleDetail(id)}
+                >
+                  <Link to="/details">
+                    <img src={img} alt="" className="card-img-top" />
+                  </Link>
+                  <button
+                    className="cart-btn"
+                    disabled={inCart ? true : false}
+                    onClick={() => {
+                      value.addToCart(id);
+                      value.openModal(id);
+                    }}
+                  >
+                    {inCart ? (
+                      <p>
+                        in cart
+                      </p>
+                    ) : (
+                      <i className="fas fa-cart-plus" />
+                    )}
+                  </button>
+                </div>
+              );
+            }}
+          </ProductConsumer>
+          <div className="card-footer d-flex justify-content-between">
+            <p className="align-self-center mb-0">{title}</p>
+            <h5 className="text-blue font-italic mb-0">
+              <span className="mr-1">$</span>
+              {price}
+            </h5>
+          </div>
+        </div>
+      </>
+    );
   }
-  
-  return (
-    <div>
-      <h2>{props.name}</h2>
-      <h4>{props.price}</h4>
-      <Button onClick={addToCart}/>
-      <hr />
-    </div>
-  )
 }
+

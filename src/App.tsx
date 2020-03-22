@@ -1,31 +1,24 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import ErrorBoundary from './ErrorBoundary'
-import Checkout from './Checkout'
-import HomePage from './HomePage'
-import { CartProvider } from './context/cartContext'
-
-function App() {
-  return (
-
-    <div className="App">
-      <CartProvider>
-        
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import Navbar from "./navBar";
+import ProductList from "./productList";
+import Details from "./Details";
+import Cart from "./ShoppingCart";
+import Modal from "./Modal";
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
         <Switch>
-          <Route path="/Checkout">
-            <ErrorBoundary>
-              <Checkout />
-            </ErrorBoundary>
-          </Route>
-          <Route path="/">
-            <ErrorBoundary>
-              <HomePage />
-            </ErrorBoundary>
-          </Route>
+          <Route exact path="/" component={ProductList} />
+          <Route path="/details" component={Details} />
+          <Route path="/cart" component={Cart} />
         </Switch>
-      </CartProvider>
-    </div>
-  );
+        <Modal />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
