@@ -21,18 +21,20 @@ export const ShopCart = (props: Props) => {
         }
     }
 
+    let numItems = 0
+    for (let item of cart) {
+        numItems += item.quantity
+    }
 
     return (
         <>
             {renderRedirect()}
-            <span style={badgeStyle}>{cart.length}</span>
+            <span style={badgeStyle}>{numItems}</span>
 
             <Button
                 icon={<Shop />}
                 onClick={() => setCheckOut(true)}
             />
-
-            {/* {cart.map((item: { name: React.ReactNode; price: React.ReactNode; }) => (<h6>{item.name} - {item.price}</h6>))} */}
         </>
     )
 }
