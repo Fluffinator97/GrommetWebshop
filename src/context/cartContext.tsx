@@ -14,7 +14,7 @@ interface Props {
 
 export const CartProvider = (props: Props) => {
     const [cart, setCart] = useState(() => {
-        const initialState: any[] = []
+        const initialState: {}[] = []
         return initialState;
       })
 

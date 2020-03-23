@@ -1,17 +1,14 @@
 import React from 'react'
-
-import { CheckoutButton } from './CheckoutButton'
 import ProductList from './productList'
+import MainGrid from './MainGrid'
 
 export default function HomePage() {
     return (
 
-    
-            <div>
-                <CheckoutButton />
-                <ProductList />
-            </div>
-     
+
+<>
+        <ProductList />
+<MainGrid/></>
 
     )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import ErrorBoundary from './ErrorBoundary';
 import Checkout from './Checkout';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
-import EmptyCart from './EmptyCart';
+import CollapsableNav from './CollapsableNav';
+
 
 function App() {
   return (
@@ -12,23 +12,10 @@ function App() {
     <div className="App">
 
       <CartProvider>
+        <CollapsableNav></CollapsableNav>
         <Switch>
-
-          <Route path="/Checkout">
-            <ErrorBoundary>
-              <Checkout />
-            </ErrorBoundary>
-          </Route>
-          <Route path="/EmptyCart">
-            <ErrorBoundary>
-              <EmptyCart />
-            </ErrorBoundary>
-          </Route>
-          <Route path="/">
-            <ErrorBoundary>
-              <HomePage />
-            </ErrorBoundary>
-          </Route>
+          <Route path="/Checkout" component={Checkout}></Route>
+          <Route path="/" component={HomePage}></Route>
         </Switch>
       </CartProvider>
     </div>
