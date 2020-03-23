@@ -4,19 +4,23 @@ import { Button } from "grommet";
 import { CartContext } from "./context/cartContext";
 import { Redirect } from 'react-router-dom'
 
+
 interface Props {
 
 }
 
 
 
-export const ShopCart = (props: Props) => {
+export const CheckoutButton = (props: Props) => {
     const [checkOut, setCheckOut] = useState(false)
     const [cartItems, setCart] = useContext(CartContext)
 
 
     const renderRedirect = () => {
-        if (checkOut) {
+        if (checkOut && numItems === 0) {
+            return <Redirect to='/EmptyCart' />
+        }
+        else if (checkOut) {
             return <Redirect to='/Checkout' />
         }
     }
@@ -29,7 +33,10 @@ export const ShopCart = (props: Props) => {
     return (
         <>
             {renderRedirect()}
-            <span style={badgeStyle}>{numItems}</span>
+
+            <span style={numItems === 0 ? { ...badgeHidden } : { ...badgeStyle }}>
+                {numItems}
+            </span>
 
             <Button
                 icon={<Shop />}
@@ -40,6 +47,7 @@ export const ShopCart = (props: Props) => {
 }
 
 const badgeStyle: CSSProperties = {
+    display: 'block',
     background: '#6FFFB0',
     borderRadius: '50%',
     color: '#333333',
@@ -48,6 +56,9 @@ const badgeStyle: CSSProperties = {
     padding: '0.1rem',
     position: 'absolute',
     textAlign: 'center',
+}
+const badgeHidden: CSSProperties = {
+    display: 'none',
 }
 
 

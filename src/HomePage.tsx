@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ShopCart } from './ShopCart'
+import { CheckoutButton } from './CheckoutButton'
 import ProductList from './productList'
 
 export default function HomePage() {
@@ -8,7 +8,7 @@ export default function HomePage() {
 
     
             <div>
-                <ShopCart />
+                <CheckoutButton />
                 <ProductList />
             </div>
      

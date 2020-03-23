@@ -4,6 +4,7 @@ import ErrorBoundary from './ErrorBoundary';
 import Checkout from './Checkout';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
+import EmptyCart from './EmptyCart';
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
           <Route path="/Checkout">
             <ErrorBoundary>
               <Checkout />
+            </ErrorBoundary>
+          </Route>
+          <Route path="/EmptyCart">
+            <ErrorBoundary>
+              <EmptyCart />
             </ErrorBoundary>
           </Route>
           <Route path="/">
