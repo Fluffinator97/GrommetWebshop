@@ -10,9 +10,13 @@ import {
     ResponsiveContext
 } from "grommet";
 import { grommet } from "grommet/themes";
-import {CheckoutButton} from "./CheckoutButton";
+import { CheckoutButton } from "./CheckoutButton";
 
-const CollapsableNav = () => (
+interface Props {
+    showCart: boolean
+}
+
+const CollapsableNav = (props: Props) => (
     <Grommet theme={grommet}>
         <ResponsiveContext.Consumer>
             {responsive =>
@@ -31,7 +35,9 @@ const CollapsableNav = () => (
                         <Box direction="row" align="center" gap="small">
                             the shop
                          </Box >
-                        <CheckoutButton showLabel={false}/>
+                        <span style={props.showCart ? { display: 'block' } : { display: 'none' }}>
+                            <CheckoutButton showLabel={false} />
+                        </span>
                     </Header>
 
 
@@ -49,8 +55,9 @@ const CollapsableNav = () => (
                                     <Anchor href="#" label="Barn" />
                                 </Nav>
                             </Box>
-
-                            <CheckoutButton showLabel={true}/>
+                            <span style={ props.showCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>
+                            <CheckoutButton showLabel={true} />
+                            </span>
                         </Header>
                     )
 

@@ -1,8 +1,8 @@
 import React, { CSSProperties, useContext } from 'react'
 import { Shop } from 'grommet-icons'
-import { Button, Box } from "grommet";
+import { Button, Box, Stack, Text } from "grommet";
 import { CartContext } from "./context/cartContext";
-import { Redirect, withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 interface Props {
@@ -17,11 +17,7 @@ export const CheckoutButton = (props: Props) => {
     }
 
     return (
-        <Box >
-            <span style={numItems === 0 ? { ...badgeHidden } : { ...badgeStyle }}>
-                {numItems}
-            </span>
-
+        <Stack anchor="top-left">
             <Link to='/Checkout'>
                 <Button
                     hoverIndicator={{ size: 'large' }}
@@ -29,22 +25,16 @@ export const CheckoutButton = (props: Props) => {
                     label={props.showLabel ? 'My Cart' : ''}
                 />
             </Link>
-        </Box>
+            <Box
+                style={numItems === 0 ? { display: 'none' } : { display: 'block'}}
+                background="accent-1"
+                pad={{ horizontal: 'xsmall' }}
+                round
+            >
+                <Text>{numItems}</Text>
+            </Box>
+        </Stack>
     )
 }
 
-const badgeStyle: CSSProperties = {
-    display: 'block',
-    background: '#6FFFB0',
-    borderRadius: '50%',
-    color: '#333333',
-    minWidth: '1.5rem',
-    padding: '0.1rem',
-    position: 'absolute',
-    top: '1%',
-    textAlign: 'center',
-}
-const badgeHidden: CSSProperties = {
-    display: 'none',
-}
 
