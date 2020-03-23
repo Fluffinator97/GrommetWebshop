@@ -23,8 +23,8 @@ const CollapsableNav = () => (
                                 label="Click me"
                                 items={[
                                     { label: "Dam", onClick: () => { } },
-                                    { label: "Her", onClick: () => { } },
-                                    { label: "MyCart", onClick: () => { } }
+                                    { label: "Herr", onClick: () => { } },
+                                    { label: "Barn", onClick: () => { } }
                                 ]}
                             />
                         </Box>
@@ -44,8 +44,9 @@ const CollapsableNav = () => (
                          </Box >
                             <Box direction='row' align='center' justify='stretch' >
                                 <Nav direction="row" align='center'>
-                                    <Anchor href="#" label="This is" />
-                                    <Anchor href="#" label="The Nav" />
+                                    <Anchor href="#" label="Dam" />
+                                    <Anchor href="#" label="Herr" />
+                                    <Anchor href="#" label="Barn" />
                                 </Nav>
                             </Box>
 
