@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import CollapsibleNav from './CollapsibleNav'
-import { CartContext } from './context/cartContext'
+import CollapsibleNav from '../CollapsibleNav'
+import { CartContext } from '../context/cartContext'
 import CheckoutCart from './CheckoutCart'
-import EmptyCart from './EmptyCart'
+import { EmptyCart } from './EmptyCart'
+
 
 export default function Checkout(empty: boolean) {
     const [cartItems, setCart] = useContext(CartContext)
@@ -12,6 +13,7 @@ export default function Checkout(empty: boolean) {
     }
     return (
         <>
+        
             <CollapsibleNav showCart={false} />
             {displayPage}
         </>

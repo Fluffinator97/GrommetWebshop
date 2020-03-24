@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { CartContext } from './context/cartContext'
+import { CartContext } from '../context/cartContext'
 import { Box } from 'grommet/components/Box'
+import { Grommet } from 'grommet/components/Grommet'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
@@ -14,13 +15,15 @@ export default function CheckoutCart() {
 
     console.log(cartItems)
     return (
+        <Grommet>
             <Box>
                 <p>
-                   {cartItems.map((item: { id: React.ReactNode; price: React.ReactNode; quantity: React.ReactNode }) =>
+                    {cartItems.map((item: { id: React.ReactNode; price: React.ReactNode; quantity: React.ReactNode }) =>
                         (<h6>{item.id} - {item.price} -- {item.quantity}</h6>))}
                 </p>
                 <p>Total = {(totalPrice).toFixed(2)} SEK</p>
 
             </Box>
+        </Grommet>
     )
 }

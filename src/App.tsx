@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import Checkout from './Checkout';
+import Checkout from './Checkout/Checkout';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
 
@@ -9,10 +9,8 @@ function App() {
   return (
 
     <div className="App">
-
       <CartProvider>
-        
-        <Switch>
+          <Switch>
           <Route path="/Checkout" component={Checkout}></Route>
           <Route path="/" component={HomePage}></Route>
         </Switch>
