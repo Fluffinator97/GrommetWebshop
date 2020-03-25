@@ -2,27 +2,88 @@ import React, { useContext } from 'react'
 import { CartContext } from '../context/cartContext'
 import { Box } from 'grommet/components/Box'
 import { Grommet } from 'grommet/components/Grommet'
+import { List, Text, Button, Paragraph, grommet } from 'grommet'
+import { Add, Subtract, AddCircle, SubtractCircle } from 'grommet-icons'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
-    // const totalPrice = cartItems.reduce((acc: number, curr: { price: number; }) => acc + curr.price, 0)
+
+    const addToCart = (data: number) => {
+        let itemInCart = cartItems.find((element: { id: number }) => element.id === data)
+        itemInCart.quantity += 1
+        setCart((currentState: any) => [...currentState])
+        console.log(itemInCart)
+    }
+
+    const arrayRemove = (arr: any[], value: any) => {
+        return arr.filter(function(ele: any){
+            return ele != value
+        })    
+     }
+
+    const removeFromCart = (data: number) => {
+        let itemInCart = cartItems.find((element: { id: number }) => element.id === data)
+        if (itemInCart.quantity > 1) {
+            itemInCart.quantity -= 1
+            setCart((currentState: any) => [...currentState])
+            console.log(itemInCart)
+        }
+        else {
+            setCart(arrayRemove(cartItems, itemInCart))
+        }
+    }
 
     let totalPrice = 0
     for (let item of cartItems) {
         totalPrice += item.quantity * item.price
-
     }
 
-    console.log(cartItems)
     return (
         <Grommet>
-            <Box>
-                <p>
-                    {cartItems.map((item: { id: React.ReactNode; price: React.ReactNode; quantity: React.ReactNode }) =>
-                        (<h6>{item.id} - {item.price} -- {item.quantity}</h6>))}
-                </p>
-                <p>Total = {(totalPrice).toFixed(2)} SEK</p>
+            <Box pad="large" height="100%" background="light-2">
+                <List
+                    data={cartItems}
+                    primaryKey={item => (
+                        <Box direction='row' wrap={true} gap='small' justify='center' align='center'>
+                            <Text size="large" weight="bold">
+                                {item.id}
+                            </Text>
+                            <Box direction='row' wrap={true} gap='small' justify='center' align='center'>
+                                <Text size="medium" weight="bold">
+                                    Quantity : {item.quantity}
+                                </Text>
+                                <Button
+                                    hoverIndicator
+                                    style={{ borderRadius: '50%' }}
+                                    size="small"
+                                    icon={<AddCircle size='medium' color='dark-1' />}
+                                    onClick={() => { addToCart(item.id) }}
+                                />
+                                <Button
+                                    hoverIndicator
+                                    size="small"
+                                    style={{ borderRadius: '50%' }}
+                                    icon={<SubtractCircle size='medium' color='dark-1' />}
+                                    onClick={() => { removeFromCart(item.id) }}
+                                />
+                            </Box>
 
+                        </Box>
+                    )}
+                    secondaryKey={item => (
+                        <Box>
+                            <Paragraph size="large">
+                                {item.price}<Text size="small" color="dark-4"> SEK/piece</Text>
+                            </Paragraph>
+                        </Box>
+                    )}
+
+                />
+                <Box>
+                    <Paragraph size="large">
+                        {totalPrice}<Text size="small" color="dark-4"> SEK</Text>
+                    </Paragraph>
+                </Box>
             </Box>
         </Grommet>
     )
