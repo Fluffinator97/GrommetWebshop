@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import { CartContext } from '../context/cartContext'
 import { Box } from 'grommet/components/Box'
 import { Grommet } from 'grommet/components/Grommet'
-import { List, Text, Button, Paragraph, grommet } from 'grommet'
-import { Add, Subtract, AddCircle, SubtractCircle } from 'grommet-icons'
+import { List, Text, Button, Paragraph } from 'grommet'
+import { AddCircle, SubtractCircle, LinkNext } from 'grommet-icons'
+import { Link } from 'react-router-dom'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
@@ -16,10 +17,10 @@ export default function CheckoutCart() {
     }
 
     const arrayRemove = (arr: any[], value: any) => {
-        return arr.filter(function(ele: any){
+        return arr.filter(function (ele: any) {
             return ele != value
-        })    
-     }
+        })
+    }
 
     const removeFromCart = (data: number) => {
         let itemInCart = cartItems.find((element: { id: number }) => element.id === data)
@@ -72,17 +73,31 @@ export default function CheckoutCart() {
                     )}
                     secondaryKey={item => (
                         <Box>
+
                             <Paragraph size="large">
                                 {item.price}<Text size="small" color="dark-4"> SEK/piece</Text>
                             </Paragraph>
+
                         </Box>
                     )}
 
                 />
-                <Box>
+                <Box align='end' gap='small'>
                     <Paragraph size="large">
-                        {totalPrice}<Text size="small" color="dark-4"> SEK</Text>
+                        Total = {totalPrice}<Text size="small" color="dark-4"> SEK</Text>
                     </Paragraph>
+
+                    <Box animation='pulse'>
+                    <Link to='/Login'>
+                        <Button
+                          
+                            size="small"
+                            primary
+                            label='to checkout'
+                            icon={<LinkNext />}
+                        />
+                    </Link>
+                </Box>
                 </Box>
             </Box>
         </Grommet>

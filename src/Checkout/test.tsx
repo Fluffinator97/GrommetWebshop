@@ -1,25 +1,15 @@
-import React from "react";
-import { Gremlin } from "grommet-icons";
-import { Box, Grommet, List, Text } from "grommet";
+import React from 'react'
+import { Grommet } from 'grommet'
+import { MeterStack } from './MeterStack'
+import { LoginForm } from './LoginForm'
+import StepsDigram from './StepsDigram'
 
-export const data = ["Boise", "Fort Collins", "Bay Area", "North Carolina"];
 
-export const ChildrenExample = () => (
-  <Grommet>
-    <Box pad="large" height="100%" background="light-2">
-      <List data={data} pad="medium">
-        {(datum: React.ReactNode, index: number) => (
-          <Box
-            key={index}
-            direction="row-responsive"
-            gap="large"
-            align="center"
-          >
-            <Gremlin size="large" />
-            <Text weight="bold">{datum}</Text>
-          </Box>
-        )}
-      </List>
-    </Box>
-  </Grommet>
-);
+export const CheckoutStages = () => (
+    <Grommet>
+        {/* <MeterStack percentageFilled={25} text="1. User Info"></MeterStack> */}
+        <StepsDigram stageNum={4} ></StepsDigram>
+        <LoginForm></LoginForm>
+
+    </Grommet>
+)

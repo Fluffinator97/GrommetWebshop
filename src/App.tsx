@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Checkout from './Checkout/Checkout';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
+import Login from './Login';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <CartProvider>
           <Switch>
           <Route path="/Checkout" component={Checkout}></Route>
+          <Route path="/Login" component={Login}></Route>
           <Route path="/" component={HomePage}></Route>
         </Switch>
       </CartProvider>

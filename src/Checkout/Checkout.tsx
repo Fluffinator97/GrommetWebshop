@@ -5,7 +5,7 @@ import CheckoutCart from './CheckoutCart'
 import { EmptyCart } from './EmptyCart'
 
 
-export default function Checkout(empty: boolean) {
+export default function Checkout() {
     const [cartItems, setCart] = useContext(CartContext)
     let displayPage = <EmptyCart />
     if (cartItems.length > 0) {
