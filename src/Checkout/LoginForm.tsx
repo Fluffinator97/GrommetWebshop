@@ -8,8 +8,8 @@ export const LoginForm = () => {
         <Box align="center" justify="center" margin='small'>
             <Box pad='small'>
                 <Form
-                    onReset={(event: any) => console.log(event)}
-                //onSubmit={({ value }) => console.log('Submit', value)}
+
+                    // onSubmit={({ value }) => console.log('Submit', value)}
                 >
                     <Box pad='small' direction='row-responsive'>
                         <FormField pad={false} margin='xsmall' label="Name" name="name" required validate={{ regexp: /^[a-z]/i }} />

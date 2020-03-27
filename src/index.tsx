@@ -9,28 +9,29 @@ import { grommet } from 'grommet/themes';
 
 import { Grommet } from 'grommet'
 
-const theme = {
-    
-      global: {
-        font: {
-          family: "'Overlock', cursive;",
-        },
-      },
-      heading: {
-        extend: "font-family: 'Nunito', sans-serif;",
-      }
-    
+export const theme = deepMerge(grommet, {
+  global: {
+    font: {
+      family: "'Overlock', cursive;",
+    },
+    colors: {
+      brand: "neutral-3",
+    },
+    heading: {
+      extend: "font-family: 'Nunito', sans-serif;",
+    },
   }
+})
 
 ReactDOM.render(
-    (
-        <Grommet theme={theme}>
-    <BrowserRouter>
+  (
+    <Grommet theme={theme}>
+      <BrowserRouter>
         <ErrorBoundary>
-            <App />
+          <App />
         </ErrorBoundary>
-    </BrowserRouter>
+      </BrowserRouter>
     </Grommet>
-    )
-    , document.getElementById('root'))
+  )
+  , document.getElementById('root'))
 

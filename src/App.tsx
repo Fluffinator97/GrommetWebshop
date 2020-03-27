@@ -5,14 +5,6 @@ import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
 import Login from './Login';
 
-
-
-
-
-
-
-
-
 function App() {
   return (
     

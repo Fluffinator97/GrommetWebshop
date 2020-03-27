@@ -17,7 +17,7 @@ export const CheckoutButton = (props: Props) => {
     }
 
     return (
-        <Stack anchor="top-left">
+        <Stack anchor="top-left" >
             <Link to='/Checkout'>
                 <Button
                     hoverIndicator={{ size: 'large' }}
@@ -26,12 +26,13 @@ export const CheckoutButton = (props: Props) => {
                 />
             </Link>
             <Box
-                style={numItems === 0 ? { display: 'none' } : { display: 'block'}}
-                background="accent-1"
+                background="light-1"
+                style={numItems === 0 ? { display: 'none' } : { display: 'block' }}
+
                 pad={{ horizontal: 'xsmall' }}
                 round
             >
-                <Text>{numItems}</Text>
+                <Text >{numItems}</Text>
             </Box>
         </Stack>
     )
