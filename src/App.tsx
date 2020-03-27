@@ -6,18 +6,26 @@ import { CartProvider } from './context/cartContext';
 import Login from './Login';
 
 
+
+
+
+
+
+
+
 function App() {
   return (
-
-    <div className="App">
-      <CartProvider>
+    
+      <div className="App">
+        <CartProvider>
           <Switch>
-          <Route path="/Checkout" component={Checkout}></Route>
-          <Route path="/Login" component={Login}></Route>
-          <Route path="/" component={HomePage}></Route>
-        </Switch>
-      </CartProvider>
-    </div>
+            <Route path="/Checkout" component={Checkout}></Route>
+            <Route path="/Login" component={Login}></Route>
+            <Route path="/" component={HomePage}></Route>
+          </Switch>
+        </CartProvider>
+      </div>
+
   );
 }
 

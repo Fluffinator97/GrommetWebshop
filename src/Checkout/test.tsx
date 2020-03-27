@@ -5,6 +5,7 @@ import { LoginForm } from './LoginForm'
 import StepsDigram from './StepsDigram'
 
 
+
 export const CheckoutStages = () => (
     <Grommet>
         {/* <MeterStack percentageFilled={25} text="1. User Info"></MeterStack> */}
