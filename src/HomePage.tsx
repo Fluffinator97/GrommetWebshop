@@ -2,6 +2,8 @@ import React from 'react'
 import ProductList from './productList'
 import MainGrid from './MainGrid'
 import CollapsibleNav from './CollapsibleNav'
+import CarouselSection from './Carousel'
+import FooterSection from './Footer'
 
 export default function HomePage() {
     return (
@@ -9,8 +11,10 @@ export default function HomePage() {
 
         <>
             <CollapsibleNav showCart={true}/>
+            <CarouselSection />
             <ProductList />
             <MainGrid />
+            <FooterSection />
         </>
 
     )
