@@ -5,6 +5,7 @@ import { Grommet } from 'grommet/components/Grommet'
 import { List, Text, Button, Paragraph } from 'grommet'
 import { AddCircle, SubtractCircle, LinkNext } from 'grommet-icons'
 import { Link } from 'react-router-dom'
+import { theme } from '../index'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
@@ -40,12 +41,12 @@ export default function CheckoutCart() {
     }
 
     return (
-        <Grommet>
-            <Box pad="large" height="100%" background="light-2">
+        <Grommet theme={theme}>
+            <Box pad="large" wrap={true} direction='row-responsive' justify='between'>
                 <List
                     data={cartItems}
                     primaryKey={item => (
-                        <Box direction='row' wrap={true} gap='small' justify='center' align='center'>
+                        <Box direction='row-responsive' wrap={true} gap='small' justify='center' align='center'>
                             <Text size="large" weight="bold">
                                 {item.id}
                             </Text>
@@ -84,20 +85,20 @@ export default function CheckoutCart() {
                 />
                 <Box align='end' gap='small'>
                     <Paragraph size="large">
-                        Total = {totalPrice}<Text size="small" color="dark-4"> SEK</Text>
+                        Total = {(totalPrice).toFixed(2)}<Text size="small" color="dark-4"> SEK</Text>
                     </Paragraph>
 
                     <Box animation='pulse'>
-                    <Link to='/Login'>
-                        <Button
-                          
-                            size="small"
-                            primary
-                            label='to checkout'
-                            icon={<LinkNext />}
-                        />
-                    </Link>
-                </Box>
+                        <Link to='/Login'>
+                            <Button
+
+                                size="small"
+                                primary
+                                label='to checkout'
+                                icon={<LinkNext />}
+                            />
+                        </Link>
+                    </Box>
                 </Box>
             </Box>
         </Grommet>

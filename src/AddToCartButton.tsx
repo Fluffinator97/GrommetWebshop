@@ -7,7 +7,6 @@ interface Props {
 }
 
 export default function AddToCartButton(props: Props) {
-
     return (
         <Button
             hoverIndicator
