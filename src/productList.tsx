@@ -5,7 +5,7 @@ export default function ProductList(){
   
   const database = [
     { name: "red tshirt", price: 10.99, id: 1, img: './assets/tshirt.jpg'},
-    { name: "yellow hoodie", price: 24.99, id: 2, img: './assets/hardRobot.jpg' },
+    { name: "yellow hoodie", price: 24.99, id: 2, img: './assets/picture1.jpg' },
     { name: "blue polo", price: 18.99, id: 3, img: './assets/picture3.jpg' },
   ]
   

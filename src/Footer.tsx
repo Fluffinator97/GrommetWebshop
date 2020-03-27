@@ -2,8 +2,6 @@ import React from 'react'
 import {
     Box,
     Footer,
-    Carousel,
-    Image,
     Text,
     Grommet,
     Anchor,
@@ -44,9 +42,9 @@ const Media = () => (
     return (
       <Grommet>
         
-        <Footer background="dark-1" pad="large">
+        {/* <Footer background="dark-1" pad="large">
           
-        </Footer>
+        </Footer> */}
         <Footer
           background="dark-2"
           pad={{ horizontal: "large", vertical: "small" }}

@@ -4,6 +4,7 @@ import MainGrid from './MainGrid'
 import CollapsibleNav from './CollapsibleNav'
 import CarouselSection from './Carousel'
 import FooterSection from './Footer'
+import products from './allProducts'
 
 export default function HomePage() {
     return (
@@ -11,7 +12,7 @@ export default function HomePage() {
 
         <>
             <CollapsibleNav showCart={true}/>
-            <CarouselSection />
+            <CarouselSection products={products}/>
             <ProductList />
             <MainGrid />
             <FooterSection />
