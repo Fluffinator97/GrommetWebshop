@@ -9,7 +9,6 @@ import { theme } from '../index'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
-
     const addToCart = (data: number) => {
         let itemInCart = cartItems.find((element: { id: number }) => element.id === data)
         itemInCart.quantity += 1
@@ -19,8 +18,7 @@ export default function CheckoutCart() {
 
     const arrayRemove = (arr: any[], value: any) => {
         return arr.filter(function (ele: any) {
-            return ele != value
-        })
+            return ele != value })
     }
 
     const removeFromCart = (data: number) => {
@@ -87,11 +85,9 @@ export default function CheckoutCart() {
                     <Paragraph size="large">
                         Total = {(totalPrice).toFixed(2)}<Text size="small" color="dark-4"> SEK</Text>
                     </Paragraph>
-
                     <Box animation='pulse'>
                         <Link to='/Login'>
                             <Button
-
                                 size="small"
                                 primary
                                 label='to checkout'
