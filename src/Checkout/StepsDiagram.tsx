@@ -8,8 +8,8 @@ interface Props {
 export default function StepsDiagram(props: Props) {
 
     return (
-        <Stack guidingChild={1}>
-            <Diagram
+        <Stack guidingChild={1} >
+            <Diagram 
                 connections={[
                     {
                         fromTarget: '1',
@@ -33,7 +33,7 @@ export default function StepsDiagram(props: Props) {
                     },
                 ]}
             />
-            <Box>
+            <Box  animation='fadeIn'>
                 <Box direction="row" justify='around'>
                     <Box align='center'>
                         <Box round id="1" margin="small" pad="small" background="brand" />

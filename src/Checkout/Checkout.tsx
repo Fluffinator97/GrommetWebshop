@@ -1,21 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import CollapsibleNav from '../CollapsibleNav'
-import { CartContext } from '../context/cartContext'
-import CheckoutCart from './CheckoutCart'
-import { EmptyCart } from './EmptyCart'
+import CheckoutStages from './CheckoutStages'
+
 
 
 export default function Checkout() {
-    const [cartItems, setCart] = useContext(CartContext)
-    let displayPage = <EmptyCart />
-    if (cartItems.length > 0) {
-        displayPage = <CheckoutCart />
-    }
     return (
-        <>
-        
-            <CollapsibleNav showCart={false} />
-            {displayPage}
-        </>
+        <div>
+            <CollapsibleNav showCart={true} />
+            <CheckoutStages></CheckoutStages>
+        </div>
     )
 }

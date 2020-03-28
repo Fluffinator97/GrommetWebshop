@@ -18,7 +18,7 @@ export const CheckoutButton = (props: Props) => {
 
     return (
         <Stack anchor="top-left" >
-            <Link to='/Checkout'>
+            <Link to='/MyCart'>
                 <Button
                     hoverIndicator={{ size: 'large' }}
                     icon={<Shop size='medium' />}

@@ -86,7 +86,7 @@ export default function CheckoutCart() {
                         Total = {(totalPrice).toFixed(2)}<Text size="small" color="dark-4"> SEK</Text>
                     </Paragraph>
                     <Box animation='pulse'>
-                        <Link to='/Login'>
+                        <Link to='/Checkout'>
                             <Button
                                 size="small"
                                 primary

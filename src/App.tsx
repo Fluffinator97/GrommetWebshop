@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import Checkout from './Checkout/Checkout';
+import MyCart from './Checkout/MyCart';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
-import Login from './Login';
+import Checkout from './Checkout/Checkout';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <div className="App">
         <CartProvider>
           <Switch>
+            <Route path="/MyCart" component={MyCart}></Route>
             <Route path="/Checkout" component={Checkout}></Route>
-            <Route path="/Login" component={Login}></Route>
             <Route path="/" component={HomePage}></Route>
           </Switch>
         </CartProvider>

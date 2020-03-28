@@ -3,28 +3,16 @@ import { Box, Button, Form, FormField, TextArea } from 'grommet'
 import { LinkNext } from 'grommet-icons'
 import { CancelButton } from './testing'
 
+interface Props{
+    SubmitForm: (((event: React.FormEvent<Element>) => void) & ((event: React.FormEvent<HTMLFormElement>) => void))
+}
+export const UserInfo = (props:Props) => {
 
-export const LoginForm = () => {
-    let userInfo = {}
-    const onSubmit = (e: { preventDefault: () => void; target: any }) => {
-        e.preventDefault()
-        userInfo = {
-            name: e.target[0].value,
-            email: e.target[1].value,
-            mobNum: e.target[2].value,
-            adr: e.target[3].value,
-        }
-        nextStage()
-    }
-
-    const nextStage =()=>{
-        
-    }
 
     return (
         <Box align="center" justify="center" margin='small'>
             <Box pad='small'>
-                <Form onSubmit={(onSubmit)} >
+                <Form onSubmit={props.SubmitForm} >
                     <Box pad='small' direction='row-responsive'>
                         <FormField
                             pad={false} margin='xsmall' label="Name" name="name" validate={{ regexp: /^[a-z]/i }} />
@@ -46,8 +34,6 @@ export const LoginForm = () => {
                     </Box>
                 </Form>
             </Box>
-
-
         </Box>
     )
 }
