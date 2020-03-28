@@ -17,10 +17,10 @@ const columnSize = {
 // if size if medium, we have 2 rows
 // if size if large or xlarge, we have 1 row
 const rowSize = {
-    small: ["xsmall", "xsmall", "xsmall"],
-    medium: ["xsmall", "xsmall"],
-    large: ["xsmall"],
-    xlarge: ["xsmall"]
+    small: ["medium", "medium", "medium"],
+    medium: ["medium", "medium"],
+    large: ["medium"],
+    xlarge: ["medium"]
 };
 
 export const ResponsiveGrid = ({
@@ -59,6 +59,7 @@ export const ResponsiveGrid = ({
 
                 return (
                     <Grid
+                        
                         {...props}
 
                         rows={!rowsVal ? size : rowsVal}

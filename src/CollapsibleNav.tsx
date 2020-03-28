@@ -3,11 +3,13 @@ import React from "react";
 import {
     Anchor,
     Box,
+    Button,
     Grommet,
     Header,
     Nav,
     Menu,
-    ResponsiveContext
+    ResponsiveContext,
+    Text
 } from "grommet";
 import { grommet } from "grommet/themes";
 import { CheckoutButton } from "./CheckoutButton";
@@ -42,7 +44,7 @@ const CollapsableNav = (props: Props) => (
             ) : (
                     <Header background="brand" pad="medium" >
                         <Box direction="row" align="center" gap="small">
-                            the shop
+                            <Anchor href="#" label='The Shop'/>
                          </Box >
                         <Box direction='row' align='center' justify='stretch' >
                             <Nav direction="row" align='center'>
