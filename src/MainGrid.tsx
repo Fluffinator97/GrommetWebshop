@@ -1,8 +1,16 @@
-import React from "react";
-import { Box, Heading, Grommet } from "grommet";
+import React, { useContext } from 'react';
+import { CartContext } from '../src/context/cartContext';
+import { Box, Button, Heading, Image, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
+
+import products from './allProducts'
+import { Send, Close, Add } from 'grommet-icons';
+
+
+
+
 
 // set custom breakpoints so we can see the changes
 const customBreakpoints = deepMerge(grommet, {
@@ -19,53 +27,55 @@ const customBreakpoints = deepMerge(grommet, {
     }
 });
 
-// let's say this is returned from an API
-const animals = [
-    "dog",
-    "cat",
-    "pig",
-    "cow",
-    "giraffe",
-    "elephant",
-    "dinosaur",
-    "chicken",
-    "duck",
-    "tiger",
-    "lion",
-    "cheetah"
-];
+ interface Props {
+     name: string,
+     price: number,
+     id: number,
+     key: number,
+     img: string,
+     products: any
+ }
 
-const listAnimalsBoxes = animals.map(animalName => (
-    <Box
+
+
+const listProductsBoxes = products.map((product, index) => {
+
+
+
+    return (
+        <Box
         elevation="large"
-        key={animalName}
+        key={product.id}
         background="light-3"
         flex={false}
         justify="center"
-        align="center"
-    >
-        <Heading level={2}>{animalName}</Heading>
-    </Box>
-));
+        align="center" >
+            <Heading margin="none">{product.name}</Heading>
+            <Image fit='cover' src={product.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
+            <p>{product.price}</p>
+            {/* <img src={product.img} alt=""/> */}
+            {/* <img src={"./assets/hardRobot.jpg"} alt=""/> */}
+            <Button margin={{'bottom': '8px'}} icon={<Add />} label="Add to Cart" onClick={() => {}} primary />
+        </Box>
+    )
+});
 
-// this is an example for a responsive Grid.
-// with this example, you can either have a fixed Grid (with a known number content)
-// or generic one (with unkown number of contents like a list that renders)
-export default function MainGiid() {
+
+export default function MainGrid() {
     return (
         <Grommet theme={customBreakpoints}>
             <Box>
 
                 <ResponsiveGrid
-                    gap="small"
+                    gap="medium"
                     margin="medium"
                     columns="medium"
                     rows="xsmall"
+                    
                 >
-                    {listAnimalsBoxes}
+                    {listProductsBoxes}
                 </ResponsiveGrid>
             </Box>
         </Grommet>
     );
 }
-
