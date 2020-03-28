@@ -19,15 +19,15 @@ export default function CarouselSection(props: Props) {
         return (
             <Box 
             margin={{ bottom: 'small'}}
-             
+            height='small'
             overflow="hidden"
             flex
             fill
             >
                 <Carousel fill>
-                    <Image fit="cover" src={props.products[1].img} />
-                    <Image fit="cover" src="//v2.grommet.io/assets/IMG_4245.jpg" />
-                    <Image fit="cover" src="//v2.grommet.io/assets/IMG_4210.jpg" />
+                    <Image fit="cover"  style={{width: '100%', height: '100%'}} src={props.products[0].img} />
+                    <Image fit="cover" style={{width: '100%', height: '100%'}} src={props.products[1].img} />
+                    <Image fit="cover" style={{width: '100%', height: '100%'}} src={props.products[2].img} />
                 </Carousel>
             </Box>
             )

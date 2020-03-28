@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../src/context/cartContext';
-import { Box, Button, Image, Grommet } from "grommet";
+import { Box, Button, Heading, Image, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
 
 import products from './allProducts'
+import { Send, Close, Add } from 'grommet-icons';
 
 
 
@@ -49,12 +50,12 @@ const listProductsBoxes = products.map((product, index) => {
         flex={false}
         justify="center"
         align="center" >
-            <h1>{product.name}</h1>
-            <Image  src={product.img} alt="" style={{maxWidth: '80%'}}/>
+            <Heading margin="none">{product.name}</Heading>
+            <Image fit='cover' src={product.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
             <p>{product.price}</p>
             {/* <img src={product.img} alt=""/> */}
             {/* <img src={"./assets/hardRobot.jpg"} alt=""/> */}
-            <Button />
+            <Button margin={{'bottom': '8px'}} icon={<Add />} label="Add to Cart" onClick={() => {}} primary />
         </Box>
     )
 });

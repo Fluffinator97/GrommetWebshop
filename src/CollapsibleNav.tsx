@@ -29,9 +29,9 @@ const CollapsableNav = (props: Props) => (
                             <Menu
                                 label="Categories"
                                 items={[
-                                    { label: "Dam", onClick: () => { } },
-                                    { label: "Herr", onClick: () => { } },
-                                    { label: "Barn", onClick: () => { } }
+                                    { label: "Sängar", onClick: () => { } },
+                                    { label: "Bord", onClick: () => { } },
+                                    { label: "TV o Media Möbler", onClick: () => { } }
                                 ]}
                             />
                         </Box>
