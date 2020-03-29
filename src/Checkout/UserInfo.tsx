@@ -7,11 +7,8 @@ interface Props{
     SubmitForm: (((event: React.FormEvent<Element>) => void) & ((event: React.FormEvent<HTMLFormElement>) => void))
 }
 export const UserInfo = (props:Props) => {
-
-
     return (
-        <Box align="center" justify="center" margin='small'>
-            <Box pad='small'>
+            <Box align="center" justify="center" >
                 <Form onSubmit={props.SubmitForm} >
                     <Box pad='small' direction='row-responsive'>
                         <FormField
@@ -34,6 +31,5 @@ export const UserInfo = (props:Props) => {
                     </Box>
                 </Form>
             </Box>
-        </Box>
     )
 }

@@ -18,7 +18,8 @@ export default function CheckoutCart() {
 
     const arrayRemove = (arr: any[], value: any) => {
         return arr.filter(function (ele: any) {
-            return ele != value })
+            return ele != value
+        })
     }
 
     const removeFromCart = (data: number) => {
@@ -32,12 +33,7 @@ export default function CheckoutCart() {
             setCart(arrayRemove(cartItems, itemInCart))
         }
     }
-
-    let totalPrice = 0
-    for (let item of cartItems) {
-        totalPrice += item.quantity * item.price
-    }
-
+    
     return (
         <Grommet theme={theme}>
             <Box pad="large" wrap={true} direction='row-responsive' justify='between'>
@@ -79,14 +75,13 @@ export default function CheckoutCart() {
 
                         </Box>
                     )}
-
                 />
                 <Box align='end' gap='small'>
                     <Paragraph size="large">
-                        Total = {(totalPrice).toFixed(2)}<Text size="small" color="dark-4"> SEK</Text>
+                        Total = {totalPrice(cartItems).toFixed(2)}<Text size="small" color="dark-4"> SEK</Text>
                     </Paragraph>
                     <Box animation='pulse'>
-                        <Link to='/Checkout'>
+                        <Link to='/Checkout' >
                             <Button
                                 size="small"
                                 primary
@@ -99,4 +94,12 @@ export default function CheckoutCart() {
             </Box>
         </Grommet>
     )
+}
+
+export const totalPrice=(cartItems: any)=>{
+    let totalPrice = 0
+    for (let item of cartItems) {
+        totalPrice += item.quantity * item.price
+    }
+    return (totalPrice)
 }

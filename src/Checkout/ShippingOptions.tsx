@@ -6,7 +6,6 @@ interface Props {
     deliveryIcon: string
     deliveryDate: Date
     deliveryCost: number
-    orderTotalCost: number
 }
 export default function Shipping(props: Props) {
     const [checked, setChecked] = useState(false);
@@ -23,7 +22,7 @@ export default function Shipping(props: Props) {
                 <Box direction='row' wrap={true} align='center'>
 
                     <Box pad={{ left: 'small' }} direction='row-responsive'>
-                        Delivery Date*:
+                        Reaches you
                     <Text margin={{ left: 'xsmall' }} style={{ fontWeight: 800 }} color='brand'>
                             {days[props.deliveryDate.getDay()]} {months[props.deliveryDate.getMonth()]}
                             {props.deliveryDate.getDate()} {props.deliveryDate.getFullYear()}
