@@ -1,14 +1,18 @@
 import React from 'react'
 import CollapsibleNav from '../CollapsibleNav'
 import CheckoutStages from './CheckoutStages'
+import FooterSection from '../Footer'
+import { Box } from 'grommet'
 
 
 
 export default function Checkout() {
     return (
-        <div>
+        <>
             <CollapsibleNav showCart={true} />
             <CheckoutStages></CheckoutStages>
-        </div>
+            <FooterSection />
+
+        </>
     )
 }

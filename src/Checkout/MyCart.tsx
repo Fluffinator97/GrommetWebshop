@@ -3,6 +3,8 @@ import CollapsibleNav from '../CollapsibleNav'
 import { CartContext } from '../context/cartContext'
 import CheckoutCart from './CheckoutCart'
 import { EmptyCart } from './EmptyCart'
+import FooterSection from '../Footer'
+import { Box } from 'grommet'
 
 
 export default function MyCart() {
@@ -13,9 +15,9 @@ export default function MyCart() {
     }
     return (
         <>
-        
             <CollapsibleNav showCart={false} />
             {displayPage}
+            <FooterSection />
         </>
     )
 }
