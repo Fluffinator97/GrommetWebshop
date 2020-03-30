@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Grommet, Box } from 'grommet'
 import { UserInfo } from './UserInfo'
 import StepsDiagram from './StepsDiagram'
@@ -7,7 +7,8 @@ import Shipping from './Shipping'
 import { CartContext } from '../context/cartContext'
 import CartSummary from './CartSummary'
 import { totalPrice } from './CheckoutCart'
-import Payment from './Payment'
+import { Payment } from './Payment'
+import { numItems } from '../CheckoutButton'
 
 export default function CheckoutStages() {
 
@@ -21,14 +22,15 @@ export default function CheckoutStages() {
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
     const [orderTotal, setOrderTotal] = useState(totalPrice(cartItems))
+    const [arrivalDate, setArrivalDate] = useState('')
     const [userInfo, setUserInfo] = useState({
-        name: '',
-        email: '',
-        mobNum: 0,
-        adr: '',
+        name: 'user',
+        email: 'email',
+        mobNum: 0o0,
+        adr: '123 me',
     }
     )
-    console.log(currentStage)
+
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
         let snapInfo =
@@ -40,38 +42,53 @@ export default function CheckoutStages() {
         }
         setUserInfo(snapInfo)
         setCurrentStage(Stages.ship)
-        console.log(currentStage)
     }
-    const ship = (value: number) => {
+
+    const ship = (value: [number, string]) => {
         setCurrentStage(Stages.pay)
-        setOrderTotal(orderTotal + value)
+        setOrderTotal(orderTotal + value[0])
+        setArrivalDate(value[1])
     }
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        console.log('UPDATE')
+        displayPage()
+    });
+
+    const displayPage = () => {
+        let displayPage = <UserInfo SubmitForm={onSubmit} />
+        switch (currentStage) {
+            case Stages.info:
+                displayPage = <UserInfo SubmitForm={onSubmit} />
+                break;
+            case Stages.ship:
+                displayPage = <Shipping ship={ship} />
+                break;
+            case Stages.pay:
+                displayPage = <Payment userSnap={userInfo} />
+                break;
+        }
+        return displayPage
+    }
+
 
     return (
         <Grommet theme={theme} >
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
-            <Box direction='row-responsive' justify='center' align='center' >
-                <Box flex={{ grow: 1 }} align='center'>
+            <Box animation='fadeIn' direction='row-responsive' justify='center' align='start' >
+                <Box width='medium' flex={{ grow: 0 }} align='center'>
                     <CartSummary
                         stageNum={currentStage}
                         userSnap={userInfo}
                         orderCost={orderTotal}
-                        totalItems={cartItems.length}
-                        arrivalDate={''}
+                        totalItems={numItems(cartItems)}
+                        arrivalDate={arrivalDate}
                     />
                 </Box>
-                <Box flex={{ grow: 3 }} style={currentStage === 1 ? { display: 'block' } : { display: 'none' }}>
-                    <UserInfo SubmitForm={onSubmit} />
+                <Box width='medium' animation='fadeIn' flex={{ grow: 3 }} >
+                    {displayPage()}
                 </Box>
-                <Box flex={{ grow: 3 }} style={currentStage === 2 ? { display: 'block' } : { display: 'none' }}>
-                    <Shipping ship={ship} />
-                </Box>
-                <Box flex={{ grow: 3 }} style={currentStage === 3 ? { display: 'block' } : { display: 'none' }}>
-                    <Payment/>
-                </Box>
-                {/* <Box style={userInfoReceived ? { display: 'none' } : { display: 'block' }}>
-                <UserInfo SubmitForm={onSubmit} /> </Box>*/}
-            
             </Box>
         </Grommet >)
 }

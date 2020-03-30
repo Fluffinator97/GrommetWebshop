@@ -5,9 +5,10 @@ import expDhlIcon from '../assets/dhlExpress.png'
 import postnordIcon from '../assets/postnord.png'
 import ShippingOptions from './ShippingOptions'
 import { LinkNext } from 'grommet-icons'
+import { reachesYou } from './ShippingOptions'
 
 interface Props {
-    ship:any
+    ship: any
 }
 export default function Shipping(props: Props) {
 
@@ -18,29 +19,37 @@ export default function Shipping(props: Props) {
     }
 
     const [value, setValue] = useState('d1')
-    const [shipCost, setShipCost] = useState(shipPrice.expressPrice)
 
     const orderDate = new Date()
     const expressDate = new Date(orderDate)
     expressDate.setDate(expressDate.getDate() + 1)
 
-    const standardDeliveryDate = new Date(orderDate)
-    standardDeliveryDate.setDate(standardDeliveryDate.getDate() + 3)
 
     const quickDeliveryDate = new Date(orderDate)
-    quickDeliveryDate.setDate(quickDeliveryDate.getDate() + 7)
+    quickDeliveryDate.setDate(quickDeliveryDate.getDate() + 3)
+
+    const standardDeliveryDate = new Date(orderDate)
+    standardDeliveryDate.setDate(standardDeliveryDate.getDate() + 7)
 
 
     const getShipPrice = (selected: string) => {
-let arrivalDate
+        let arrivalDate, shipCost
         switch (selected) {
-            case 'd1': setShipCost(shipPrice.expressPrice)
+            case 'd1':
+                shipCost = (shipPrice.expressPrice)
+                arrivalDate = reachesYou(expressDate)
+
                 break;
-            case 'd2': setShipCost(shipPrice.quickPrice)
+            case 'd2':
+                shipCost = (shipPrice.quickPrice)
+                arrivalDate = reachesYou(quickDeliveryDate)
                 break;
-            case 'd3': setShipCost(shipPrice.standardPrice)
+            case 'd3':
+                shipCost = (shipPrice.standardPrice)
+                arrivalDate = reachesYou(standardDeliveryDate)
                 break;
         }
+
         return [shipCost, arrivalDate]
     }
 
@@ -90,7 +99,7 @@ let arrivalDate
                 <Button
                     reverse={true} icon={<LinkNext size='small' />}
                     label="Next" size='small' primary
-                    onClick={(e)=>{props.ship(getShipPrice(value))}} />
+                    onClick={(e) => { props.ship(getShipPrice(value)) }} />
             </Box>
         </Box>
     )

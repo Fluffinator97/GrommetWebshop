@@ -33,23 +33,23 @@ export default function StepsDiagram(props: Props) {
                     },
                 ]}
             />
-            <Box  animation='fadeIn'>
+            <Box  >
                 <Box direction="row" justify='around'>
-                    <Box align='center'>
+                    <Box align='center' animation='fadeIn'>
                         <Box round id="1" margin="small" pad="small" background="brand" />
                         <Text>{props.stageNum === 1 ? 'Info' : ''}</Text>
                     </Box>
-                    <Box align='center'>
+                    <Box align='center' animation='fadeIn'>
                         <Box round id="2" margin="small" pad="small"
                             background={props.stageNum >= 2 ? 'brand' : 'light-4'} />
                         <Text>{props.stageNum === 2 ? 'Ship' : ''}</Text>
                     </Box>
-                    <Box align='center'>
+                    <Box align='center' animation='fadeIn'>
                         <Box round id="3" margin="small" pad="small"
                             background={props.stageNum >= 3 ? 'brand' : 'light-4'} />
                         <Text>{props.stageNum === 3 ? 'Pay' : ''}</Text>
                     </Box>
-                    <Box align='center'>
+                    <Box align='center' animation='fadeIn'>
                         <Box round id="4" margin="small" pad="small"
                             background={props.stageNum >= 4 ? 'brand' : 'light-4'} />
                         <Text>{props.stageNum === 4 ? 'Done' : ''}</Text>

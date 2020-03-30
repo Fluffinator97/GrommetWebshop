@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Heading, CheckBox, Image, Text } from 'grommet'
+import { Box, Heading, Image, Text } from 'grommet'
 
 interface Props {
     deliveryName: string
@@ -8,11 +8,7 @@ interface Props {
     deliveryCost: number
 }
 export default function Shipping(props: Props) {
-    const [checked, setChecked] = useState(false);
-    const onChange = (event: { target: { checked: any } }) => setChecked(event.target.checked);
-
-    const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+   
     return (
         <Box>
             <Box pad={{ left: 'small' }} direction='row-responsive'>
@@ -24,8 +20,7 @@ export default function Shipping(props: Props) {
                     <Box pad={{ left: 'small' }} direction='row-responsive'>
                         Reaches you
                     <Text margin={{ left: 'xsmall' }} style={{ fontWeight: 800 }} color='brand'>
-                            {days[props.deliveryDate.getDay()]} {months[props.deliveryDate.getMonth()]}
-                            {props.deliveryDate.getDate()} {props.deliveryDate.getFullYear()}
+                           {reachesYou(props.deliveryDate)}
                         </Text>
                     </Box>
                     <Box pad={{ left: 'small' }} direction='row-responsive' >
@@ -42,4 +37,11 @@ export default function Shipping(props: Props) {
         </Box>
 
     )
+}
+
+export function reachesYou(date: Date){
+    const days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+   return ( `${days[date.getDay()]} ${months[date.getMonth()]}
+    ${date.getDate()} ${date.getFullYear()}`)
 }
