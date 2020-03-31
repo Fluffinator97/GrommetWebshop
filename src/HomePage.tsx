@@ -11,9 +11,7 @@ export default function HomePage() {
     return (
         <>
             <CollapsibleNav showCart={true}/>
-            <CarouselSection products={products}/>
             <FirstSection />
-            <ProductList />
             <MainGrid />
             <Footer />
         </>
