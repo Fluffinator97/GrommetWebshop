@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box, Diagram, Stack, Text } from 'grommet';
-
 interface Props {
     stageNum: number
 }

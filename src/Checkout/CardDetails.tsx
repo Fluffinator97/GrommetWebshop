@@ -1,25 +1,22 @@
 import React, { useState } from 'react'
-import { Form, Box, FormField, Text, Button, MaskedInput, TextInput } from 'grommet'
-import { LinkNext } from 'grommet-icons'
-
+import { Form, Box, FormField, Text, MaskedInput } from 'grommet'
+import FinishBuyButton from './FinishBuyButton'
 interface Props {
     userName: string
+    SubmitForm: (((event: React.FormEvent<Element>) => void) & ((event: React.FormEvent<HTMLFormElement>) => void)) | undefined
 }
 function CardDetails(props: Props) {
-    const [nameValue, setNameValue] = useState(props.userName)
     const [value, setValue] = useState("")
     const [dateValue, setDateValue] = useState("")
     const [cvvValue, setCvvValue] = useState("")
     return (
-        <Form>
-            <Box pad='small' direction='row' align='center'>
-                <Box pad='small'>
+        <Form onSubmit={props.SubmitForm}>
+            <Box direction='row' align='center'>
+                <Box>
                     <Text>Name</Text>
-                    
-                    <TextInput
-                        value={nameValue}
-                        onChange={(event: { target: { value: React.SetStateAction<string> } }) => setNameValue(event.target.value)}
-                    />
+                    <FormField
+                        pad={false} margin='xsmall' name="name" validate={{ regexp: /^[a-z]/i }} required 
+                        value={props.userName}/>
                 </Box>
                 <Box>
                     Card number
@@ -53,6 +50,7 @@ function CardDetails(props: Props) {
                         ]}
                         value={value}
                         onChange={event => setValue(event.target.value)}
+                        required
                     />
                 </Box>
                 <Box pad='small' width='xsmall'>
@@ -68,6 +66,7 @@ function CardDetails(props: Props) {
                         ]}
                         value={cvvValue}
                         onChange={event => setCvvValue(event.target.value)}
+                        required
                     />
                 </Box>
                 <Box pad='small' width='small'>
@@ -90,13 +89,10 @@ function CardDetails(props: Props) {
                         ]}
                         value={dateValue}
                         onChange={event => setDateValue(event.target.value)}
+                        required
                     />
                 </Box>
-            <Box animation='pulse'>
-                <Button
-                    reverse={true} icon={<LinkNext size='small' />}
-                    type="submit" label="Next" size='small' primary />
-            </Box>
+               <FinishBuyButton/>
             </Box>
 
 

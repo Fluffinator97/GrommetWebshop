@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef} from 'react'
 import { Grommet, Box } from 'grommet'
 import { UserInfo } from './UserInfo'
 import StepsDiagram from './StepsDiagram'
@@ -9,6 +9,7 @@ import CartSummary from './CartSummary'
 import { totalPrice } from './CheckoutCart'
 import { Payment } from './Payment'
 import { numItems } from '../CheckoutButton'
+import Done from './Done'
 
 export default function CheckoutStages() {
 
@@ -31,6 +32,14 @@ export default function CheckoutStages() {
     }
     )
 
+    // function usePrevious(value: any):number {
+    //     const ref = useRef();
+    //     useEffect(() => {
+    //       ref.current = value;
+    //     }, [value])
+    //     return ref.current;
+    //   }
+
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
         let snapInfo =
@@ -49,13 +58,20 @@ export default function CheckoutStages() {
         setOrderTotal(orderTotal + value[0])
         setArrivalDate(value[1])
     }
-
+    const pay = () => {
+        setCurrentStage(Stages.done)
+        setCart([])
+    }
     useEffect(() => {
-        // Update the document title using the browser API
         console.log('UPDATE')
-        displayPage()
-    });
+        return () => {
+            displayPage();
+        }
+    },
+        [currentStage],
+    );
 
+    // const finalCost = usePrevious(orderTotal)
     const displayPage = () => {
         let displayPage = <UserInfo SubmitForm={onSubmit} />
         switch (currentStage) {
@@ -66,24 +82,32 @@ export default function CheckoutStages() {
                 displayPage = <Shipping ship={ship} />
                 break;
             case Stages.pay:
-                displayPage = <Payment userSnap={userInfo} />
+                displayPage = <Payment userSnap={userInfo}
+                    SubmitForm={pay} />
                 break;
         }
         return displayPage
     }
 
-
+    if (currentStage === Stages.done) {
+        return (
+            <Grommet theme={theme} >
+                <StepsDiagram stageNum={currentStage} ></StepsDiagram>
+                <Done userSnap={userInfo} />
+            </Grommet >)
+    }
     return (
         <Grommet theme={theme} >
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
+
             <Box animation='fadeIn' direction='row-responsive' justify='center' align='start' >
                 <Box width='medium' flex={{ grow: 0 }} align='center'>
                     <CartSummary
                         stageNum={currentStage}
                         userSnap={userInfo}
-                        orderCost={orderTotal}
-                        totalItems={numItems(cartItems)}
                         arrivalDate={arrivalDate}
+                        orderCost={ orderTotal }
+                        totalItems={numItems(cartItems)}
                     />
                 </Box>
                 <Box width='medium' animation='fadeIn' flex={{ grow: 3 }} >
