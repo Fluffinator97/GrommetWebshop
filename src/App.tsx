@@ -4,6 +4,7 @@ import MyCart from './Checkout/MyCart';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
 import Checkout from './Checkout/Checkout';
+import ProductPage from './ProductPage';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Switch>
             <Route path="/MyCart" component={MyCart}></Route>
             <Route path="/Checkout" component={Checkout}></Route>
-            <Route path="/" component={HomePage}></Route>
+            <Route path="/" component={ProductPage}></Route>
           </Switch>
         </CartProvider>
       </div>
