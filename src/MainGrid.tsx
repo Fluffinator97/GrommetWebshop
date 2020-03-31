@@ -49,10 +49,12 @@ const listProductsBoxes = products.map((product, index) => {
         background="light-3"
         flex={false}
         justify="center"
-        align="center" >
+        align="center"
+         >
             <Heading margin="none">{product.name}</Heading>
             <Image fit='cover' src={product.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
             <p>{product.price}</p>
+            <p>{product.description}</p>
             {/* <img src={product.img} alt=""/> */}
             {/* <img src={"./assets/hardRobot.jpg"} alt=""/> */}
             <Button margin={{'bottom': '8px'}} icon={<Add />} label="Add to Cart" onClick={() => {}} primary />
@@ -64,7 +66,7 @@ const listProductsBoxes = products.map((product, index) => {
 export default function MainGrid() {
     return (
         <Grommet theme={customBreakpoints}>
-            <Box>
+           
 
                 <ResponsiveGrid
                     gap="medium"
@@ -75,7 +77,7 @@ export default function MainGrid() {
                 >
                     {listProductsBoxes}
                 </ResponsiveGrid>
-            </Box>
+           
         </Grommet>
     );
 }

@@ -5,6 +5,7 @@ import CollapsibleNav from './CollapsibleNav'
 import CarouselSection from './Carousel'
 import FooterSection from './Footer'
 import products from './allProducts'
+import FirstSection from './FirstSection'
 
 export default function HomePage() {
     return (
@@ -13,7 +14,8 @@ export default function HomePage() {
         <>
             <CollapsibleNav showCart={true}/>
             <CarouselSection products={products}/>
-            <ProductList />
+            <FirstSection />
+            {/* <ProductList /> */}
             <MainGrid />
             <FooterSection />
         </>
