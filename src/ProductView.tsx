@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
-import { Box, Carousel, Heading, Image, Grommet } from "grommet";
+import { Box, Button, Carousel, Heading, Image, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
-import Button from './AddToCartButton'
-import { CartContext } from '../src/context/cartContext';
 
 const customBreakpoints = deepMerge(grommet, {
     global: {
@@ -28,21 +26,8 @@ interface Props {
     products: any
 }
 
-export default function ProductView(props: Props) {
-
-        const [cart, setCart] = useContext(CartContext);
-        const addToCart = () => {
-          let itemInCart = cart.find((element: { id: number }) => element.id === props.id)
-          if (itemInCart === undefined) {
-            itemInCart = { id: props.id, price: props.price, quantity: 1 };
-            setCart((currentState: any) => [...currentState, itemInCart]);
-          }
-          else {
-            itemInCart.quantity += 1
-            setCart((currentState: any) => [...currentState]);
-          }
-        }
-
+export default function ProductView() {
+    
     return (
         <Grommet theme={customBreakpoints}>
             <Box direction='row-responsive'
@@ -71,7 +56,7 @@ export default function ProductView(props: Props) {
                 >
                 <Heading level='3' color='brand'>Wooden Forge</Heading>
 
-                <Button onClick={addToCart} />
+
                 </Box>
                 <Box >
                     <Heading level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
