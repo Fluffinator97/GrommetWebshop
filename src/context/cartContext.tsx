@@ -1,13 +1,6 @@
 import React, { useState, ReactNode } from 'react'
-
-
- const initialState: any[] = []
-
-
-
-
+const initialState: any[] = []
 export const CartContext = React.createContext(initialState)
-
 interface Props {
     children: ReactNode
 }

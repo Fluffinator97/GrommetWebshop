@@ -11,14 +11,10 @@ interface Props {
 
 export const CheckoutButton = (props: Props) => {
     const [cartItems, setCart] = useContext(CartContext)
-    let numItems = 0
-    for (let item of cartItems) {
-        numItems += item.quantity
-    }
 
     return (
-        <Stack anchor="top-left">
-            <Link to='/Checkout'>
+        <Stack anchor="top-left" >
+            <Link to='/MyCart'>
                 <Button
                     hoverIndicator={{ size: 'large' }}
                     icon={<Shop size='medium' />}
@@ -26,15 +22,24 @@ export const CheckoutButton = (props: Props) => {
                 />
             </Link>
             <Box
-                style={numItems === 0 ? { display: 'none' } : { display: 'block'}}
-                background="accent-1"
+                background="light-1"
+                style={numItems(cartItems) === 0 ? { display: 'none' } : { display: 'block' }}
+
                 pad={{ horizontal: 'xsmall' }}
                 round
             >
-                <Text>{numItems}</Text>
+                <Text >{numItems(cartItems)}</Text>
             </Box>
         </Stack>
     )
 }
 
 
+export function numItems(cartItems: any){
+    
+    let numItems = 0
+    for (let item of cartItems) {
+        numItems += item.quantity
+    }
+    return numItems
+}

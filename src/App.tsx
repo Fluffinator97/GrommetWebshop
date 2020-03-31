@@ -1,23 +1,23 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
-import Checkout from './Checkout';
+import MyCart from './Checkout/MyCart';
 import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
-
+import Checkout from './Checkout/Checkout';
 
 function App() {
   return (
+    
+      <div className="App">
+        <CartProvider>
+          <Switch>
+            <Route path="/MyCart" component={MyCart}></Route>
+            <Route path="/Checkout" component={Checkout}></Route>
+            <Route path="/" component={HomePage}></Route>
+          </Switch>
+        </CartProvider>
+      </div>
 
-    <div className="App">
-      
-      <CartProvider>
-        
-        <Switch>
-          <Route path="/Checkout" component={Checkout}></Route>
-          <Route path="/" component={HomePage}></Route>
-        </Switch>
-      </CartProvider>
-    </div>
   );
 }
 

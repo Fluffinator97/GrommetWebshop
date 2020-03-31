@@ -4,12 +4,34 @@ import App from './App'
 import { BrowserRouter } from "react-router-dom"
 import ErrorBoundary from './ErrorBoundary'
 import './index.css'
+import { deepMerge } from "grommet/utils";
+import { grommet } from 'grommet/themes';
+
+import { Grommet } from 'grommet'
+
+export const theme = deepMerge(grommet, {
+  global: {
+    font: {
+      family: "'Overlock', cursive;",
+    },
+    colors: {
+      brand: "neutral-3",
+    },
+    heading: {
+      extend: "font-family: 'Nunito', sans-serif;",
+    },
+  }
+})
 
 ReactDOM.render(
-    (<BrowserRouter>
+  (
+    <Grommet theme={theme}>
+      <BrowserRouter>
         <ErrorBoundary>
-            <App />
+          <App />
         </ErrorBoundary>
-    </BrowserRouter>)
-    , document.getElementById('root'))
+      </BrowserRouter>
+    </Grommet>
+  )
+  , document.getElementById('root'))
 

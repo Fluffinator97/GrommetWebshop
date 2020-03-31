@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
-import CollapsibleNav from './CollapsibleNav'
-import { CartContext } from './context/cartContext'
+import CollapsibleNav from '../CollapsibleNav'
+import { CartContext } from '../context/cartContext'
 import CheckoutCart from './CheckoutCart'
-import EmptyCart from './EmptyCart'
+import { EmptyCart } from './EmptyCart'
+import FooterSection from '../Footer'
 
-export default function Checkout(empty: boolean) {
+
+
+export default function MyCart() {
     const [cartItems, setCart] = useContext(CartContext)
     let displayPage = <EmptyCart />
     if (cartItems.length > 0) {
@@ -12,8 +15,9 @@ export default function Checkout(empty: boolean) {
     }
     return (
         <>
-            <CollapsibleNav showCart={false} />
+            <CollapsibleNav showCart={true} />
             {displayPage}
+            <FooterSection />
         </>
     )
 }

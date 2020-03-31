@@ -8,7 +8,7 @@ interface Props {
   id: number,
   price: number,
   img: string,
-  description: string,
+
 }
 
 export default function Product(props: Props) {
@@ -24,10 +24,6 @@ export default function Product(props: Props) {
       itemInCart.quantity += 1
       setCart((currentState: any) => [...currentState]);
     }
-
-    
-
-
   }
 
   return (
