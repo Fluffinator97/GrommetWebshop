@@ -1,21 +1,13 @@
 import React from "react";
 import { Grid, ResponsiveContext } from "grommet";
 
-// columns, rows and areas are for Grid with a known number of contents / boxes.
-
-// if size if small, we only 1 column
-// if size if medium, we only 2 column
-// if size if large or xlarge, we 3 three columns
 const columnSize = {
     'small': ["auto"],
-    'medium': ["auto", "auto"],
-    'large': ["auto", "auto", "auto"],
-    'xlarge': ["auto", "auto", "auto"]
+    'medium': ["auto", "auto", "auto"],
+    'large': ["auto", "auto", "auto", "auto"],
+    'xlarge': ["auto", "auto", "auto", "auto"]
 };
 
-// if size if small, we have 3 rows
-// if size if medium, we have 2 rows
-// if size if large or xlarge, we have 1 row
 const rowSize = {
     small: ["medium", "medium", "medium"],
     medium: ["medium", "medium"],
@@ -28,7 +20,6 @@ export const ResponsiveGrid = ({
 }) => (
         <ResponsiveContext.Consumer>
             {size => {
-                // take into consideration if not array is sent but a simple string
                 let columnsVal = columnSize.small;
                 if (columnSize) {
                     switch (size) {
@@ -59,7 +50,7 @@ export const ResponsiveGrid = ({
 
                 return (
                     <Grid
-                        
+
                         {...props}
 
                         rows={!rowsVal ? size : rowsVal}
