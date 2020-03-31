@@ -1,10 +1,10 @@
 import React from 'react';
-import { Grommet } from "grommet";
+import { Grommet, Box, Heading } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
-import products from './allProducts'
-import Product from './product';
+import products, { Product } from './allProducts'
+import ProductCard from './product';
 
 const customBreakpoints = deepMerge(grommet, {
     global: {
@@ -30,20 +30,42 @@ const customBreakpoints = deepMerge(grommet, {
 });
 
 export default function MainGrid() {
+    const categories: { [index: string]: Product[] } = {}
+    
+    for (const product of products) {
+        const category = categories[product.category]
+        // Init empty category array if not yet present
+        if (!category) {
+            categories[product.category] = []
+        }
+
+        // Add product to category array
+        categories[product.category].push(product)
+    }
+    console.log(categories)
+    
     return (
         <Grommet theme={customBreakpoints}>
-            <ResponsiveGrid
-                gap="medium"
-                margin="medium"
-                columns="medium"
-                rows="xsmall"
-            >
-                {
-                    products.map(item => (
-                        <Product name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} />
-                    ))
-                }
-            </ResponsiveGrid>
+            {Object.keys(categories).map((name) => {
+                const products = categories[name]
+                return (
+                    <Box>
+                        <Heading>{name.toUpperCase()}</Heading>
+                        <ResponsiveGrid
+                            gap="medium"
+                            margin="medium"
+                            columns="medium"
+                            rows="xsmall"
+                        >
+                            {
+                                products.map(item => (
+                                    <ProductCard name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} />
+                                ))
+                            }
+                        </ResponsiveGrid>
+                    </Box>
+                )
+            })}
         </Grommet>
     );
 }
