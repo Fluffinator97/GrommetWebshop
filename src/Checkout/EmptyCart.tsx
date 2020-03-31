@@ -10,7 +10,6 @@ export const EmptyCart = ({
         <Grommet >
             <ResponsiveContext.Consumer>
                 {size => {
-
                     console.log(size)
                     return (
                         <Grommet theme={theme}>
@@ -19,7 +18,6 @@ export const EmptyCart = ({
                                     count: 1,
                                     size: 'auto',
                                 }}
-
                                 align='center'
                                 justify='center'
                                 gap="medium"

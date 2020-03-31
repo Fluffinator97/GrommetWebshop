@@ -32,13 +32,13 @@ export default function CheckoutStages() {
     }
     )
 
-    // function usePrevious(value: any):number {
-    //     const ref = useRef();
-    //     useEffect(() => {
-    //       ref.current = value;
-    //     }, [value])
-    //     return ref.current;
-    //   }
+    function usePrevious(value: undefined) {
+        const ref = useRef();
+        useEffect(() => {
+          ref.current = value;
+        }, [value])
+        return ref.current;
+      }
 
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
@@ -60,8 +60,10 @@ export default function CheckoutStages() {
     }
     const pay = () => {
         setCurrentStage(Stages.done)
+        
         setCart([])
     }
+    
     useEffect(() => {
         console.log('UPDATE')
         return () => {
@@ -93,7 +95,9 @@ export default function CheckoutStages() {
         return (
             <Grommet theme={theme} >
                 <StepsDiagram stageNum={currentStage} ></StepsDiagram>
+                <Box margin={{top:'large'}} >
                 <Done userSnap={userInfo} />
+                </Box>
             </Grommet >)
     }
     return (
