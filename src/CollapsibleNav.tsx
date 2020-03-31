@@ -29,9 +29,11 @@ const CollapsableNav = (props: Props) => (
                             <Menu
                                 label="Categories"
                                 items={[
-                                    { label: "Sängar", onClick: () => { } },
-                                    { label: "Bord", onClick: () => { } },
-                                    { label: "TV o Media Möbler", onClick: () => { } }
+                                    { label: "Bed", onClick: () => { } },
+                                    { label: "Lamp", onClick: () => { } },
+                                    { label: "Table", onClick: () => { } },
+                                    { label: "Carpet", onClick: () => { } },
+                                    { label: "Pillow", onClick: () => { } }
                                 ]}
                             />
                         </Box>
@@ -54,9 +56,11 @@ const CollapsableNav = (props: Props) => (
                             <Box direction='row' align='center' justify='stretch' >
                                 <Nav direction="row" align='center'>
                                     
-                                    <Anchor icon={<Baby/>}href="#" label="Dam" />
-                                    <Anchor icon={<User/>}href="#" label="Herr" />
-                                    <Anchor icon={<UserFemale/>}href="#" label="Barn" />
+                                    <Anchor href="#" label="Bed" />
+                                    <Anchor href="#" label="Lamp" />
+                                    <Anchor href="#" label="Table" />
+                                    <Anchor href="#" label="Carpet" />
+                                    <Anchor href="#" label="Pillow" />
                                 </Nav>
                             </Box>
                             <span style={ props.showCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>
