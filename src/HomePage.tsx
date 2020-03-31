@@ -5,17 +5,18 @@ import CollapsibleNav from './CollapsibleNav'
 import CarouselSection from './Carousel'
 import Footer from './Footer'
 import products from './allProducts'
-import { Box } from 'grommet'
+import FirstSection from './FirstSection'
 
 export default function HomePage() {
     return (
-        <Box>
+        <>
             <CollapsibleNav showCart={true}/>
-            <Box height='small'><CarouselSection products={products}/></Box>
-            <ProductList />
-            <Box><MainGrid/></Box>
-            <Footer/>
-        </Box>
+            <CarouselSection products={products}/>
+            <FirstSection />
+            {/* <ProductList /> */}
+            <MainGrid />
+            <Footer />
+        </>
 
     )
 }

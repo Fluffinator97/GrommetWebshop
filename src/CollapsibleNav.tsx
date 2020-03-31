@@ -11,9 +11,9 @@ import {
     ResponsiveContext,
     Text
 } from "grommet";
-import { grommet } from "grommet/themes";
+
 import { CheckoutButton } from "./CheckoutButton";
-import { theme } from "./index";
+
 
 interface Props {
     showCart: boolean
@@ -28,9 +28,11 @@ const CollapsibleNav = (props: Props) => (
                         <Menu
                             label="Click me"
                             items={[
-                                { label: "Dam", onClick: () => { } },
-                                { label: "Herr", onClick: () => { } },
-                                { label: "Barn", onClick: () => { } }
+                                { label: "Bed", onClick: () => { } },
+                                { label: "Lamp", onClick: () => { } },
+                                { label: "Table", onClick: () => { } },
+                                { label: "Carpet", onClick: () => { } },
+                                { label: "Pillow", onClick: () => { } }
                             ]}
                         />
                     </Box>
@@ -44,13 +46,15 @@ const CollapsibleNav = (props: Props) => (
             ) : (
                     <Header background="brand" pad="medium" >
                         <Box direction="row" align="center" gap="small">
-                            <Anchor href="#" label='The Shop'/>
-                         </Box >
+                            <Anchor href="#" label='The Shop' />
+                        </Box >
                         <Box direction='row' align='center' justify='stretch' >
                             <Nav direction="row" align='center'>
-                                <Anchor href="#" label="Dam" color='light-1' />
-                                <Anchor href="#" label="Herr" color='light-1' />
-                                <Anchor href="#" label="Barn" color='light-1' />
+                                <Anchor href="#" label="Bed" color='light-1' />
+                                <Anchor href="#" label="Lamp" color='light-1' />
+                                <Anchor href="#" label="Table" color='light-1' />
+                                <Anchor href="#" label="Carpet" color='light-1' />
+                                <Anchor href="#" label="Pillow" color='light-1' />
                             </Nav>
                         </Box>
                         <span style={props.showCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>
