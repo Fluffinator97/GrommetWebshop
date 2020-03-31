@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Accordion, AccordionPanel, Box, Grommet, Text, FormField, Form } from "grommet";
-import { theme } from '../index'
+import { theme } from '../../index'
 import CardDetails from "./CardDetails";
 import FinishBuyButton from "./FinishBuyButton";
 
@@ -28,10 +28,18 @@ export const Payment = (props: Props) => {
                 onActive={newActiveIndex => setActiveIndex(newActiveIndex)}
             >
                 <AccordionPanel
-                    header={renderPanelHeader("Swish", activeIndex.includes(0))}
+                    header={renderPanelHeader("Card", activeIndex.includes(0))}
+                >
+
+                    <Box pad="medium" >
+                        <CardDetails userName={props.userSnap.name} SubmitForm={props.SubmitForm} />
+                    </Box>
+                </AccordionPanel>
+                <AccordionPanel
+                    header={renderPanelHeader("Swish", activeIndex.includes(1))}
                 >
                     <Form onSubmit={props.SubmitForm}>
-                        <Box direction='row' align='center'>
+                        <Box pad='small' direction='row' wrap={true} align='center'>
 
                             <Box direction='row' justify='evenly' align='center'>
                                 <Text >Mobile Num : </Text>
@@ -41,28 +49,25 @@ export const Payment = (props: Props) => {
                                     onClick={(e) => (e.currentTarget.value = '')}
                                 />
                             </Box>
-                            <FinishBuyButton />
+                            <Box pad='small'>
+                                <FinishBuyButton />
+                            </Box>
                         </Box>
                     </Form>
-                </AccordionPanel>
-                <AccordionPanel
-                    header={renderPanelHeader("Card", activeIndex.includes(1))}
-                >
-                    <Box pad="medium" >
-                        <CardDetails userName={props.userSnap.name} SubmitForm={props.SubmitForm}/>
-                    </Box>
                 </AccordionPanel>
                 <AccordionPanel
                     header={renderPanelHeader("Invoice", activeIndex.includes(2))}
                 >
                     <Box direction='row' align='center' >
                         <Form onSubmit={props.SubmitForm}>
-                            <Box direction='row' align='center' >
-                                <Box pad='small' justify='evenly' direction='row' align='center' >
+                            <Box direction='row' wrap={true} align='center' >
+                                <Box pad='small' justify='start' wrap={true} direction='row' align='center' >
                                     <Text >Invoice will be sent to:</Text>
                                     <FormField name="email" type="email" value={props.userSnap.email} required />
                                 </Box>
-                                <FinishBuyButton />
+                                <Box pad='small'>
+                                    <FinishBuyButton />
+                                </Box>
                             </Box>
                         </Form>
                     </Box>

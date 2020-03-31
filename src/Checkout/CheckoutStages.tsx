@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef} from 'react'
+import React, { useState, useContext, useEffect, useRef } from 'react'
 import { Grommet, Box } from 'grommet'
 import { UserInfo } from './UserInfo'
 import StepsDiagram from './StepsDiagram'
@@ -7,9 +7,9 @@ import Shipping from './Shipping'
 import { CartContext } from '../context/cartContext'
 import CartSummary from './CartSummary'
 import { totalPrice } from './CheckoutCart'
-import { Payment } from './Payment'
+import { Payment } from './Payment/Payment'
 import { numItems } from '../CheckoutButton'
-import Done from './Done'
+import Done from './Payment/Done'
 
 export default function CheckoutStages() {
 
@@ -100,13 +100,13 @@ export default function CheckoutStages() {
         <Grommet theme={theme} >
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
 
-            <Box animation='fadeIn' direction='row-responsive' justify='center' align='start' >
+            <Box animation='fadeIn' direction='row' wrap={true} justify='center' align='start' >
                 <Box width='medium' flex={{ grow: 0 }} align='center'>
                     <CartSummary
                         stageNum={currentStage}
                         userSnap={userInfo}
                         arrivalDate={arrivalDate}
-                        orderCost={ orderTotal }
+                        orderCost={orderTotal}
                         totalItems={numItems(cartItems)}
                     />
                 </Box>
