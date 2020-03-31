@@ -13,7 +13,7 @@ export default function ProductList(){
     <div>
       {
         database.map(item => (
-          <Product name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} description={item.desc} />
+          <Product name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} />
         ))
       }
     </div>

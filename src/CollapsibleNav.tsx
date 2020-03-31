@@ -3,16 +3,14 @@ import React from "react";
 import {
     Anchor,
     Box,
-    Button,
-    Grommet,
     Header,
     Nav,
     Menu,
     ResponsiveContext,
-    Text
 } from "grommet";
 
 import { CheckoutButton } from "./CheckoutButton";
+import { Link } from "react-router-dom";
 
 
 interface Props {
@@ -36,18 +34,22 @@ const CollapsibleNav = (props: Props) => (
                             ]}
                         />
                     </Box>
-                    <Box direction="row" align="center" gap="small">
-                        the shop
+                    <Link to='/Home' style={{ textDecoration: 'none', color: 'white' }}>
+                        <Box direction="row" align="center" gap="small">
+                            The Shop
                          </Box >
+                    </Link>
                     <span style={props.showCart ? { display: 'block' } : { display: 'none' }}>
                         <CheckoutButton showLabel={false} />
                     </span>
                 </Header>
             ) : (
                     <Header background="brand" pad="medium" >
-                        <Box direction="row" align="center" gap="small">
-                            <Anchor href="#" label='The Shop' />
-                        </Box >
+                        <Link to='/Home' style={{ textDecoration: 'none', color: 'white' }}>
+                            <Box color='light-1' direction="row" align="center" gap="small">
+                                The Shop
+                            </Box>
+                        </Link>
                         <Box direction='row' align='center' justify='stretch' >
                             <Nav direction="row" align='center'>
                                 <Anchor href="#" label="Bed" color='light-1' />

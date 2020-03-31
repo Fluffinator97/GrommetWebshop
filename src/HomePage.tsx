@@ -13,7 +13,7 @@ export default function HomePage() {
             <CollapsibleNav showCart={true}/>
             <CarouselSection products={products}/>
             <FirstSection />
-            {/* <ProductList /> */}
+            <ProductList />
             <MainGrid />
             <Footer />
         </>
