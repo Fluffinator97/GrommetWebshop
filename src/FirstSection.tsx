@@ -3,10 +3,9 @@ import { CartContext } from '../src/context/cartContext';
 import { Box, Button, Carousel, Heading, Image, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
-import { ResponsiveGrid2 } from "./ResponsiveGrid2";
 
-import products from './allProducts'
-import { Send, Close, Add } from 'grommet-icons';
+
+
 
 
 
@@ -38,26 +37,7 @@ const customBreakpoints = deepMerge(grommet, {
 
  
 
-//  const listProductsBoxes = products.map((product, index) => {
 
-
-
-//      return (
-//          <Box
-//          elevation="large"
-//          key={product.id}
-//          background="light-3"
-//          flex={false}
-//          justify="center"
-//          align="center" >
-//              <Heading margin="none"></Heading>
-//              <Image fit='cover'  alt="" style={{width: '100%', maxHeight: '100%' }}/>
-            
-            
-//              <Button margin={{'bottom': '8px'}} icon={<Add />} label="Add to Cart" onClick={() => {}} primary />
-//          </Box>
-//      )
-//  });
 
 
 export default function FirstSection() {
@@ -96,33 +76,3 @@ export default function FirstSection() {
     );
 }
 
-{/* <Box
-           border='all'
-           margin='medium'>
-
-                
-                
-                <ResponsiveGrid2
-                    >
-                        <Box
-                        border='all'
-                        
-                        height='small'>
-                        <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '100%'}}/>
-
-                        </Box>
-                        <Box
-                        border='all'
-                        >
-
-                            <Heading level='3'>Buy now</Heading>
-                        </Box>
-                                    {/* <Heading margin={{}}>Best Seller</Heading>
-                                    <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '40%'}}/>
-                                <Heading level='3'>This is our </Heading> */}
-
-                    {/* {listProductsBoxes} */}
-        //         </ResponsiveGrid2>
-        //     </Box>
-            
-        // </Grommet> */}
