@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../src/context/cartContext';
 import Button from './AddToCartButton'
-import { Box, Image } from 'grommet';
+import { Box, Image, Heading } from 'grommet';
 
 interface Props {
   name: string,
@@ -28,23 +28,20 @@ export default function Product(props: Props) {
 
   return (
     <Box
-    height='medium'
-    // background={{'image': 'url(./assets/picture4.jpg)'}}
-    >
-
-      {console.log("img", props.img)}
-      <Box 
-     
-      >
-
-        <Image fit='contain' src={props.img} alt="" />
-      </Box>
-      <h2>{props.name}</h2>
-      <h4>{props.price}</h4>
-      <Button onClick={addToCart} />
-
-      <hr />
+    elevation="large"
+    key={props.id}
+    background="light-3"
+    flex={false}
+    justify="center"
+    align="center"
+     >
+        <Heading margin="none">{props.name}</Heading>
+        <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
+        <p>{props.price}</p>
+        {/* <p>{props.description}</p> */}
+        <Button onClick={addToCart} />
     </Box>
     
-  )
-}
+    )
+  }
+  
