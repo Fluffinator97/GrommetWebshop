@@ -84,6 +84,7 @@ export default function FirstSection() {
                 </Carousel>
                 </Box>
                 <Box 
+                margin={{'left': 'small'}}
                 fill='horizontal'
                 justify='center'
                 alignContent='center'>
