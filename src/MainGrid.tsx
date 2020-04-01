@@ -5,6 +5,7 @@ import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
 import products, { Product } from './allProducts'
 import ProductCard from './product';
+import {CaretDown } from 'grommet-icons';
 
 const customBreakpoints = deepMerge(grommet, {
     global: {
@@ -50,7 +51,12 @@ export default function MainGrid() {
                 const products = categories[name]
                 return (
                     <Box>
-                        <Heading>{name.toUpperCase()}</Heading>
+                        <Heading
+                        margin={{'left': 'medium'}}
+                        >
+                        {name.toUpperCase()}
+                       
+                        </Heading>
                         <ResponsiveGrid
                             gap="medium"
                             margin="medium"

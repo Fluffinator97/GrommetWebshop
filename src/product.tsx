@@ -38,7 +38,7 @@ export default function Product(props: Props) {
      >
         <Heading margin="none">{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
-        <p>{props.price}</p>
+        <p>{props.price} kr</p>
         {/* <p>{props.description}</p> */}
         <Button onClick={addToCart} />
     </Box>
