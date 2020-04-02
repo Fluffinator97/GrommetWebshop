@@ -17,7 +17,7 @@ export default function ProductCard(props: Props) {
   const [cart, setCart] = useContext(CartContext);
 
   const addToCart = (event: React.MouseEvent) => {
-    event.preventDefault();
+    event.preventDefault()
     event.stopPropagation();
 
     let itemInCart = cart.find((element: { id: number }) => element.id === props.id)
@@ -32,7 +32,8 @@ export default function ProductCard(props: Props) {
   }
 
   return (
-    <Link to={"/product/" + props.id}>
+    <Link to={"/product/" + props.id}
+    >
       <Box
         fill
         elevation="large"
@@ -45,7 +46,6 @@ export default function ProductCard(props: Props) {
         <Heading margin="none" level='3'>{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
         <p>{props.price} kr</p>
-        
         <Button onClick={addToCart} />
       </Box>
     </Link>
