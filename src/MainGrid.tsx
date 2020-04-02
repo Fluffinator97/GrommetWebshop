@@ -52,14 +52,10 @@ export default function MainGrid() {
                 return (
                     <Box 
                     hoverIndicator
-                    onClick={() => {alert("clicked");}}
-                      >
+                    onClick={() => {
+                      alert("clicked");}}>
                         <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
-                        <Heading
-                        
-                        
-                       
-                        >
+                        <Heading>
                         {name.toUpperCase()}
                        
                         </Heading>
