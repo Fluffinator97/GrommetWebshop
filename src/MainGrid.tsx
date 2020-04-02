@@ -4,7 +4,7 @@ import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
 import products, { Product } from './allProducts'
-import ProductCard from './product';
+import ProductCard from './productCard';
 import {CaretDown } from 'grommet-icons';
 
 const customBreakpoints = deepMerge(grommet, {
@@ -50,10 +50,7 @@ export default function MainGrid() {
             {Object.keys(categories).map((name) => {
                 const products = categories[name]
                 return (
-                    <Box 
-                    hoverIndicator
-                    onClick={() => {
-                      alert("clicked");}}>
+                    <Box>
                         <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
                         <Heading>
                         {name.toUpperCase()}
