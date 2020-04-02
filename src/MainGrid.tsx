@@ -1,10 +1,11 @@
 import React from 'react';
-import { Grommet, Box, Heading } from "grommet";
+import { Grommet, Box, Heading, Nav } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
 import products, { Product } from './allProducts'
 import ProductCard from './product';
+import {CaretDown } from 'grommet-icons';
 
 const customBreakpoints = deepMerge(grommet, {
     global: {
@@ -50,7 +51,17 @@ export default function MainGrid() {
                 const products = categories[name]
                 return (
                     <Box>
-                        <Heading>{name.toUpperCase()}</Heading>
+                        <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
+                        <Heading
+                        
+                        
+                       
+                        >
+                        {name.toUpperCase()}
+                       
+                        </Heading>
+                        </Nav>
+                        
                         <ResponsiveGrid
                             gap="medium"
                             margin="medium"

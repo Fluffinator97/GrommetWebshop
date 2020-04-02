@@ -29,18 +29,18 @@ export default function Product(props: Props) {
 
   return (
     <Box
-      elevation="large"
-      key={props.id}
-      background="light-3"
-      flex={false}
-      justify="center"
-      align="center"
-    >
-      <Heading margin="none">{props.name}</Heading>
-      <Image fit='cover' src={props.img} alt="" style={{ width: '100%', maxHeight: '100%' }} />
-      <p>{props.price}</p>
-      {/* <p>{props.description}</p> */}
-      <Button onClick={addToCart} />
+    elevation="large"
+    key={props.id}
+    background="light-3"
+    flex={false}
+    justify="center"
+    align="center"
+     >
+        <Heading margin="none" level='3'>{props.name}</Heading>
+        <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
+        <p>{props.price} kr</p>
+        
+        <Button onClick={addToCart} />
     </Box>
 
   )
