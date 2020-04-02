@@ -5,32 +5,10 @@ import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
 import Checkout from './Checkout/Checkout';
 import ProductPage from './ProductPage';
-import { deepMerge } from "grommet/utils";
-import { Grommet, grommet } from 'grommet';
-
-
-// rename custombreackpoint to customTheme
-const customBreakpoints = deepMerge(grommet, {
-  global: {
-      breakpoints: {
-          small: {
-              value: 600
-          },
-          medium: {
-              value: 900
-          },
-          large: 3000
-      }
-  }
-});
-
-
-
-
+import './index.css'
 function App() {
   
   return (
-    <Grommet theme={customBreakpoints}>
       <div className="App">
         <CartProvider>
           <Switch>
@@ -41,7 +19,6 @@ function App() {
           </Switch>
         </CartProvider>
       </div>
-    </Grommet>
   );
 }
 
