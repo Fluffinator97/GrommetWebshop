@@ -1,15 +1,22 @@
 import React from 'react'
 import CollapsibleNav from './CollapsibleNav'
 import Footer from './Footer'
-import ProductLayout from './ProductLayout'
+import ProductView from './ProductView'
 
-
+interface Props {
+    name: string,
+    id: number,
+    price: number,
+    img: string,
+    description: string,
+    category?: string
+  }
 
 export default function ProductPage() {
     return (
         <>
             <CollapsibleNav showCart={true}/>
-            <ProductLayout  />
+            <ProductView {} />
             <Footer />
         </>
 
