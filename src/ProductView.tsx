@@ -49,6 +49,7 @@ export default function ProductView(props: Props) {
                 justify='center'
                 alignSelf='center'
                 border='all'
+                
                 style={{width: '50%', height: '50%' , marginRight: '20px', flexWrap: 'wrap'}}
             >
                 {/* <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '80%'}}/> */}

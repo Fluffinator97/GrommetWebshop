@@ -14,7 +14,7 @@ const products: Product[] = [
     //Bed
 
     { name: "Neiden", price: 399, id: 1, img: './assets/agy.jpg', description: 'The solid surface of solid wood is beautiful as it is, but if you want to make it more personal you can laser, paint or wax it. Ribbed, mattress and bedding are sold separately. 90x200cm', category: 'bed' },
-    { name: "Utåker", price: 1795, id: 2, img: './assets/agy2.jpg', description: 'Mattress and bedding are sold separately. Stacked on each other, these 2 beds become a single bed or sofa. It includes 2 bed 80x200cm', category: 'bed'  },
+    { name: "Utåker", price: 1795, id: 2, img: '../assets/agy2.jpg', description: 'Mattress and bedding are sold separately. Stacked on each other, these 2 beds become a single bed or sofa. It includes 2 bed 80x200cm', category: 'bed'  },
     { name: "Napoli", price: 6495, id: 3, img: './assets/03.jpg', description: 'Fabric Mega light gray with Napoli bed mattress and 18 cm metal legs, 5-zone pocket elastic, Each zone adapts to your body. 120x200cm', category: 'bed'  },
     { name: "Roma", price: 7995, id: 16, img: './assets/26.jpg', description: 'Fabric Roma light gray with bed mattress and 18 cm metal legs. The width is 90cm, height 60cm and length 200cm.', category: 'bed'  },
     { name: "Cozy Bed", price: 3995, id: 17, img: './assets/23.jpg', description: 'Fabric Look light gray with bed mattress and 16 cm legs, with the width of 140cm, height 50cm and lenght 200cm.', category: 'bed'  },
