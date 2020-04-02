@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect, useRef } from 'react'
-import { Grommet, Box } from 'grommet'
+import React, { useState, useContext, useEffect } from 'react'
+import { Grommet, Box, Image } from 'grommet'
 import { UserInfo } from './UserInfo'
 import StepsDiagram from './StepsDiagram'
 import { theme } from '../index'
@@ -10,20 +10,21 @@ import { totalPrice } from './CheckoutCart'
 import { Payment } from './Payment/Payment'
 import { numItems } from '../CheckoutButton'
 import Done from './Payment/Done'
+import loader from '../assets/payment.gif'
+import '../index.css'
 
 export default function CheckoutStages() {
-
     enum Stages {
         info = 1,
         ship = 2,
         pay = 3,
         done = 4
     }
-
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
     const [orderTotal, setOrderTotal] = useState(totalPrice(cartItems))
     const [arrivalDate, setArrivalDate] = useState('')
+    const [processingDisplay, setprocessingDisplay] = useState(true)
     const [userInfo, setUserInfo] = useState({
         name: 'user',
         email: 'email',
@@ -31,14 +32,6 @@ export default function CheckoutStages() {
         adr: '123 me',
     }
     )
-
-    function usePrevious(value: undefined) {
-        const ref = useRef();
-        useEffect(() => {
-          ref.current = value;
-        }, [value])
-        return ref.current;
-      }
 
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
@@ -58,14 +51,8 @@ export default function CheckoutStages() {
         setOrderTotal(orderTotal + value[0])
         setArrivalDate(value[1])
     }
-    const pay = () => {
-        setCurrentStage(Stages.done)
-        
-        setCart([])
-    }
-    
+
     useEffect(() => {
-        console.log('UPDATE')
         return () => {
             displayPage();
         }
@@ -73,7 +60,6 @@ export default function CheckoutStages() {
         [currentStage],
     );
 
-    // const finalCost = usePrevious(orderTotal)
     const displayPage = () => {
         let displayPage = <UserInfo SubmitForm={onSubmit} />
         switch (currentStage) {
@@ -91,19 +77,47 @@ export default function CheckoutStages() {
         return displayPage
     }
 
+    const pay = () => {
+        setCurrentStage(Stages.done)
+        const promisePay = new Promise((accept, reject) => {
+            console.log('check')
+            setTimeout(() => {
+                accept('')
+            }, 5000); // accept after 5 second
+        })
+
+        const processPayment = () => {
+            promisePay
+                .then((accept) => {
+                    console.log('accept:', accept);
+                })
+                .catch((error) => {
+                    console.log('error:', error);
+                })
+                .finally(() => {
+                    setCart([])
+                    setprocessingDisplay(false)
+                })
+        }
+        processPayment()
+    }
+
     if (currentStage === Stages.done) {
-        return (
-            <Grommet theme={theme} >
-                <StepsDiagram stageNum={currentStage} ></StepsDiagram>
-                <Box margin={{top:'large'}} >
-                <Done userSnap={userInfo} />
+        while (processingDisplay) {
+            return (
+
+                <Box pad='none' margin='none' height='medium' align='center' >
+                    <Image fit='contain'src={loader} />
                 </Box>
-            </Grommet >)
+            )
+        }
+        return <Grommet theme={theme} >
+            <Done arrivalDate={arrivalDate} />
+        </Grommet >
     }
     return (
         <Grommet theme={theme} >
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
-
             <Box animation='fadeIn' direction='row' wrap={true} justify='center' align='start' >
                 <Box width='medium' flex={{ grow: 0 }} align='center'>
                     <CartSummary

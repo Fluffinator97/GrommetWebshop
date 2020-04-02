@@ -31,7 +31,6 @@ export const EmptyCart = ({
                                             reverse={true}
                                             icon={<LinkNext />}
                                             label='Let`s fill it up! '
-
                                             margin='small'
                                         />
 

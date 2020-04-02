@@ -3,6 +3,7 @@ import { Box, Button } from 'grommet'
 import { LinkNext } from 'grommet-icons'
 
 function FinishBuyButton() {
+
     return (
         <Box animation='pulse'>
             <Button

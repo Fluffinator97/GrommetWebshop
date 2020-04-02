@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Accordion, AccordionPanel, Box, Grommet, Text, FormField, Form } from "grommet";
+import React, { useState } from "react"
+import { Accordion, AccordionPanel, Box, Grommet, Text, FormField, Form } from "grommet"
 import { theme } from '../../index'
-import CardDetails from "./CardDetails";
-import FinishBuyButton from "./FinishBuyButton";
+import CardDetails from "./CardDetails"
+import FinishBuyButton from "./FinishBuyButton"
 
 const renderPanelHeader = (title: {}, active: boolean) => (
     <Box direction="row" align="center" pad="medium" gap="small">
@@ -11,7 +11,7 @@ const renderPanelHeader = (title: {}, active: boolean) => (
         </strong>
         <Text color="brand">{active ? "-" : "+"}</Text>
     </Box>
-);
+)
 
 interface Props {
     userSnap: { name: string; mobNum: number; email: string }
