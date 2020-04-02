@@ -9,6 +9,7 @@ interface Props {
 export default function AddToCartButton(props: Props) {
     return (
         <Button
+            margin={{'bottom': 'xsmall'}}
             hoverIndicator
             icon={<Cart />}
             label={'Add To Cart'}
