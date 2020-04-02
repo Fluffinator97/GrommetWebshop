@@ -3,7 +3,7 @@ import { Box, Heading, Text } from 'grommet'
 
 interface Props {
     stageNum: number
-    userSnap: { name: string; adr: string; mobNum: number }
+    userSnap: { name: string; adr: string; adr1: number; adr2: string; mobNum: number }
     orderCost: number
     totalItems: React.ReactNode
     arrivalDate: string
@@ -20,8 +20,10 @@ function CartSummary(props: Props) {
                 </Box>
                 <Box style={props.stageNum >= 2 ? { display: 'block' } : { display: 'none' }}>
                     <Text>Deliver To:</Text>
-                    <Text>{props.userSnap.name} <br /> {props.userSnap.adr}  <br /> {props.userSnap.mobNum}</Text>
-                </Box>  
+                    <Text> <br />{props.userSnap.name} <br /> {props.userSnap.adr}<br />
+                    {props.userSnap.adr1} {props.userSnap.adr2}
+                        <br /> {props.userSnap.mobNum}</Text>
+                </Box>
                 <Box style={props.stageNum >= 3 ? { display: 'block' } : { display: 'none' }}>
                     <Text>Reaches you:</Text>
                     <Text> {props.arrivalDate}</Text>

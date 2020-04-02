@@ -21,33 +21,30 @@ export default function CheckoutStages() {
         done = 4
     }
 
-    
-const getUserInfo = ()=>{
-    const userDetails = (localStorage.getItem('userInfo')) as string
-    const userDetailsParsed = JSON.parse(userDetails)
-    if(userDetails === null){
-        return {
-            name: 'user',
-            email: 'email',
-            mobNum: 0o0,
-            adr: '123 me',
-            adr1: 0o0,
-            adr2: '123 me',
+    const getUserInfo = () => {
+        const userDetails = (localStorage.getItem('userInfo')) as string
+        const userDetailsParsed = JSON.parse(userDetails)
+        if (userDetails === null) {
+            return {
+                name: 'user',
+                email: 'email',
+                mobNum: 0o0,
+                adr: '123 me',
+                adr1: 0o0,
+                adr2: '123 me',
+            }
+        }
+        else {
+            return {
+                name: userDetailsParsed.name,
+                email: userDetailsParsed.email,
+                mobNum: userDetailsParsed.mobNum,
+                adr: userDetailsParsed.adr,
+                adr1: userDetailsParsed.adr1,
+                adr2: userDetailsParsed.adr2,
+            }
         }
     }
-    else{
-        console.log(userDetailsParsed, 'i reached')
-
-        return {
-            name: userDetailsParsed.name,
-            email: userDetailsParsed.email,
-            mobNum: userDetailsParsed.mobNum,
-            adr: userDetailsParsed.adr,
-            adr1: userDetailsParsed.adr1,
-            adr2: userDetailsParsed.adr2,
-        }
-    }
-}
 
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
@@ -57,7 +54,7 @@ const getUserInfo = ()=>{
     const [userInfo, setUserInfo] = useState(getUserInfo)
 
     localStorage.setItem('userInfo', JSON.stringify(userInfo))
-    
+
     useEffect(() => {
         return () => {
             getUserInfo();
@@ -65,7 +62,6 @@ const getUserInfo = ()=>{
     },
         [userInfo],
     )
-
 
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
@@ -143,7 +139,7 @@ const getUserInfo = ()=>{
             return (
 
                 <Box pad='none' margin='none' height='medium' align='center' >
-                    <Image fit='contain'src={loader} />
+                    <Image fit='contain' src={loader} />
                 </Box>
             )
         }

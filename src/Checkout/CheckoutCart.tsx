@@ -6,6 +6,7 @@ import { List, Text, Button, Paragraph } from 'grommet'
 import { AddCircle, SubtractCircle, LinkNext } from 'grommet-icons'
 import { Link } from 'react-router-dom'
 import { theme } from '../index'
+import products from '../allProducts'
 
 export default function CheckoutCart() {
     const [cartItems, setCart] = useContext(CartContext)
@@ -15,13 +16,11 @@ export default function CheckoutCart() {
         setCart((currentState: any) => [...currentState])
         console.log(itemInCart)
     }
-
     const arrayRemove = (arr: any[], value: any) => {
         return arr.filter(function (ele: any) {
             return ele != value
         })
     }
-
     const removeFromCart = (data: number) => {
         let itemInCart = cartItems.find((element: { id: number }) => element.id === data)
         if (itemInCart.quantity > 1) {
@@ -33,8 +32,8 @@ export default function CheckoutCart() {
             setCart(arrayRemove(cartItems, itemInCart))
         }
     }
-    
-    return (
+    console.log(cartItems)
+   return (
         <Grommet theme={theme}>
             <Box pad="large" wrap={true} direction='row-responsive' justify='between'>
                 <List
@@ -42,7 +41,7 @@ export default function CheckoutCart() {
                     primaryKey={item => (
                         <Box direction='row-responsive' wrap={true} gap='small' justify='center' align='center'>
                             <Text size="large" weight="bold">
-                                {item.id}
+                                {item.name}
                             </Text>
                             <Box direction='row' wrap={true} gap='small' justify='center' align='center'>
                                 <Text size="medium" weight="bold">
@@ -68,11 +67,9 @@ export default function CheckoutCart() {
                     )}
                     secondaryKey={item => (
                         <Box>
-
                             <Paragraph size="large">
                                 {item.price}<Text size="small" color="dark-4"> SEK/piece</Text>
                             </Paragraph>
-
                         </Box>
                     )}
                 />

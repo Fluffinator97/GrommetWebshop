@@ -10,7 +10,6 @@ export const EmptyCart = ({
         <Grommet >
             <ResponsiveContext.Consumer>
                 {size => {
-                    console.log(size)
                     return (
                         <Grommet theme={theme}>
                             <Grid
