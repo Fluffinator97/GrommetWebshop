@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { CartContext } from '../src/context/cartContext';
 import Button from './AddToCartButton'
 import { Box, Image, Heading } from 'grommet';
+import { Link } from 'react-router-dom';
 
 interface Props {
   name: string,
@@ -12,10 +13,13 @@ interface Props {
   category?: string
 }
 
-export default function Product(props: Props) {
+export default function ProductCard(props: Props) {
   const [cart, setCart] = useContext(CartContext);
 
-  const addToCart = () => {
+  const addToCart = (event: React.MouseEvent) => {
+    event.preventDefault()
+    event.stopPropagation();
+
     let itemInCart = cart.find((element: { id: number }) => element.id === props.id)
     if (itemInCart === undefined) {
       itemInCart = { id: props.id, price: props.price, quantity: 1 };
@@ -27,19 +31,23 @@ export default function Product(props: Props) {
     }
   }
   return (
-    <Box
-    elevation="large"
-    key={props.id}
-    background="light-3"
-    flex={false}
-    justify="center"
-    align="center"
-     >
+    <Link to={"/product/" + props.id}
+    >
+      <Box
+        fill
+        elevation="large"
+        key={props.id}
+        background="light-3"
+        flex={false}
+        justify="center"
+        align="center"
+      >
         <Heading margin="none" level='3'>{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
         <p>{props.price} SEK</p>
         <Button onClick={addToCart} />
-    </Box>
-
+      </Box>
+    </Link>
   )
 }
+  
