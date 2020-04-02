@@ -10,7 +10,9 @@ import {
 } from "grommet";
 
 import { CheckoutButton } from "./CheckoutButton";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import MyCart from "./Checkout/MyCart";
+import { link } from "fs";
 
 
 interface Props {
@@ -26,11 +28,12 @@ const CollapsibleNav = (props: Props) => (
                         <Menu
                             label="Categories"
                             items={[
-                                { label: "Bed", onClick: () => { } },
-                                { label: "Lamp", onClick: () => { } },
-                                { label: "Table", onClick: () => { } },
-                                { label: "Carpet", onClick: () => { } },
-                                { label: "Pillow", onClick: () => { } }
+                                { label: "Beds", onClick: () => { } },
+                                { label: "Lamps", onClick: () => { } },
+                                { label: "Tables", onClick: () => { } },
+                                { label: "Carpets", onClick: () => { } },
+                                { label: "Pillows", onClick: () => { } },
+                                { label: "My Cart", onClick: ()=> {} },
                             ]}
                         />
                     </Box>
@@ -52,11 +55,11 @@ const CollapsibleNav = (props: Props) => (
                         </Link>
                         <Box direction='row' align='center' justify='stretch' >
                             <Nav direction="row" align='center'>
-                                <Anchor href="#" label="Bed" color='light-1' />
-                                <Anchor href="#" label="Lamp" color='light-1' />
-                                <Anchor href="#" label="Table" color='light-1' />
-                                <Anchor href="#" label="Carpet" color='light-1' />
-                                <Anchor href="#" label="Pillow" color='light-1' />
+                                <Anchor href="#" label="Beds" color='light-1' />
+                                <Anchor href="#" label="Lamps" color='light-1' />
+                                <Anchor href="#" label="Tables" color='light-1' />
+                                <Anchor href="#" label="Carpets" color='light-1' />
+                                <Anchor href="#" label="Pillows" color='light-1' />
                             </Nav>
                         </Box>
                         <span style={props.showCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>

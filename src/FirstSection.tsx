@@ -24,7 +24,7 @@ export default function FirstSection() {
             </Box>
             <Box fill='horizontal' justify='center' align='center'>
                 <Heading textAlign='center' level='3' color='brand'>Best Seller</Heading>
-                <Heading textAlign='center' level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
+                <Heading style={{textAlign:'justify'}} level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
             </Box>
         </Box>
 

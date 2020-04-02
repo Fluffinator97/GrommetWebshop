@@ -39,9 +39,8 @@ export default function CheckoutCart() {
         else {
             return ['']
         }
-        // return [itemInCartValues[name],itemInCartValues]
     }
-    console.log(getNameandImage(3))
+
     return (
         <Grommet theme={theme}>
             <Box pad="large" wrap={true} direction='row-responsive' justify='between'>

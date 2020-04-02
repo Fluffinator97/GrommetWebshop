@@ -33,6 +33,8 @@ export default function ProductCard(props: Props) {
   return (
     <Link to={"/product/" + props.id} style={{ textDecoration: 'none', color: 'white' }}>
       <Box
+        round='small'
+        pad='small'
         fill
         elevation="large"
         key={props.id}
@@ -42,11 +44,11 @@ export default function ProductCard(props: Props) {
         align="center"
       >
         <Heading margin="none" level='3'>{props.name}</Heading>
-        <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
+        <Image fit='cover' src={props.img} alt="" style={{ width: '100%', maxHeight: '100%' }} />
         <p>{props.price} SEK</p>
         <Button onClick={addToCart} />
       </Box>
     </Link>
   )
 }
-  
+

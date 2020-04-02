@@ -16,7 +16,7 @@ interface Props {
 export const UserInfo = (props: Props) => {
     return (
         <Box align="center" justify="center" >
-            <Form onSubmit={props.SubmitForm} >
+            <Form onSubmit={props.SubmitForm}>
                 <Box pad='xsmall' direction='row-responsive'>
                     <FormField
                         pad={false} margin='xsmall' label="Name" name="name"
@@ -61,7 +61,6 @@ export const UserInfo = (props: Props) => {
 
                 <Box direction="row" wrap={true} justify='evenly' margin={{ top: 'small' }} gap='small'>
                     <CancelButton />
-                    <Button type="reset" label="Reset" size='small' alignSelf='center' />
                     <Box animation='pulse'>
                         <Button
                             reverse={true} icon={<LinkNext size='small' />}
