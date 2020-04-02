@@ -50,7 +50,10 @@ export default function MainGrid() {
             {Object.keys(categories).map((name) => {
                 const products = categories[name]
                 return (
-                    <Box>
+                    <Box 
+                    hoverIndicator
+                    onClick={() => {alert("clicked");}}
+                      >
                         <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
                         <Heading
                         
