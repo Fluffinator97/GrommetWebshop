@@ -3,6 +3,14 @@ import { Box, Button, Carousel, Heading, Image, Grommet } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 
+
+interface Props {
+    name: string,
+    id: number,
+    price: number,
+    img: string,
+  }
+
 const customBreakpoints = deepMerge(grommet, {
     global: {
         breakpoints: {
@@ -53,9 +61,9 @@ export default function ProductView() {
                 align='center'
                 style={{width: '50%'}}
                 >
-                <Heading level='3' color='brand'>Wooden Forge</Heading>
+                <Heading level='3' color='brand'>Hell on wheels</Heading>
                 
-                <Heading level='4' color='brand'>2495 kr</Heading>
+                <Heading level='4' color='brand'>2495 sek</Heading>
 
                 <Box 
                 align="center" 

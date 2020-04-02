@@ -85,7 +85,7 @@ export default function FirstSection() {
                 justify='center'
                 alignContent='center'>
                     <Heading level='3' color='brand'>Best Seller</Heading>
-                    <Heading level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
+                    <Heading level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495 sek.</Heading>
                 </Box>
             </Box>
         </Grommet>

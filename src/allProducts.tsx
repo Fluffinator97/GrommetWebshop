@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-// export interface allProducts {
-//     name: string,
-//     price: number,
-//     id: number,
-//     img: string
-// }
+export interface allProducts {
+    name: string,
+    price: number,
+    id: number,
+    img: string
+ }
 const products = [
     { name: "NEIDEN", price: 2995, id: 1, img: './assets/agy.jpg', description: 'The solid surface of solid wood is beautiful as it is, but if you want to make it more personal you can laser, paint or wax it.' },
     { name: "UTÅKER", price: 1795, id: 2, img: './assets/agy2.jpg', description: ''  },

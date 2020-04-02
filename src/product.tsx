@@ -8,7 +8,6 @@ interface Props {
   id: number,
   price: number,
   img: string,
-
 }
 
 export default function Product(props: Props) {
