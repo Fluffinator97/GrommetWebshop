@@ -49,7 +49,10 @@ export default function MainGrid() {
             {Object.keys(categories).map((name) => {
                 const products = categories[name]
                 return (
-                    <Box>
+                    <Box 
+                    hoverIndicator
+                    onClick={() => {alert("clicked");}}
+                    >
                         <Heading>{name.toUpperCase()}</Heading>
                         <ResponsiveGrid
                             gap="medium"
@@ -59,7 +62,7 @@ export default function MainGrid() {
                         >
                             {
                                 products.map(item => (
-                                    <ProductCard name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} />
+                                    <ProductCard name={item.name} id={item.id} price={item.price} key={item.id} img={item.img} description={item.description} />
                                 ))
                             }
                         </ResponsiveGrid>

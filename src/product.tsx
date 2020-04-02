@@ -8,7 +8,7 @@ interface Props {
   id: number,
   price: number,
   img: string,
-  desc?: string,
+  description: string,
   category?: string
 }
 
