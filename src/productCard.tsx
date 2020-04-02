@@ -35,6 +35,7 @@ export default function ProductCard(props: Props) {
     <Link to={"/product/" + props.id}
     >
       <Box
+        fill
         elevation="large"
         key={props.id}
         background="light-3"
