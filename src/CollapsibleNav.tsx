@@ -24,7 +24,7 @@ const CollapsibleNav = (props: Props) => (
                 <Header background="brand" pad="medium">
                     <Box direction="row">
                         <Menu
-                            label="Click me"
+                            label="Categories"
                             items={[
                                 { label: "Bed", onClick: () => { } },
                                 { label: "Lamp", onClick: () => { } },

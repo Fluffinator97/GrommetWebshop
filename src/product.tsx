@@ -8,6 +8,8 @@ interface Props {
   id: number,
   price: number,
   img: string,
+  desc?: string,
+  category?: string
 }
 
 export default function Product(props: Props) {
@@ -36,7 +38,7 @@ export default function Product(props: Props) {
      >
         <Heading margin="none">{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
-        <p>{props.price} sek</p>
+        <p>{props.price}</p>
         {/* <p>{props.description}</p> */}
         <Button onClick={addToCart} />
     </Box>
