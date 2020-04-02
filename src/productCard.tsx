@@ -30,7 +30,6 @@ export default function ProductCard(props: Props) {
       setCart((currentState: any) => [...currentState]);
     }
   }
-
   return (
     <Link to={"/product/" + props.id}
     >
@@ -45,7 +44,7 @@ export default function ProductCard(props: Props) {
       >
         <Heading margin="none" level='3'>{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
-        <p>{props.price} kr</p>
+        <p>{props.price} SEK</p>
         <Button onClick={addToCart} />
       </Box>
     </Link>

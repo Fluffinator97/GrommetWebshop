@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect, useRef} from 'react'
-import { Grommet, Box } from 'grommet'
+import React, { useState, useContext, useEffect } from 'react'
+import { Grommet, Box, Image } from 'grommet'
 import { UserInfo } from './UserInfo'
 import StepsDiagram from './StepsDiagram'
 import { theme } from '../index'
@@ -7,12 +7,13 @@ import Shipping from './Shipping'
 import { CartContext } from '../context/cartContext'
 import CartSummary from './CartSummary'
 import { totalPrice } from './CheckoutCart'
-import { Payment } from './Payment'
+import { Payment } from './Payment/Payment'
 import { numItems } from '../CheckoutButton'
-import Done from './Done'
+import Done from './Payment/Done'
+import loader from '../assets/payment.gif'
+import '../index.css'
 
 export default function CheckoutStages() {
-
     enum Stages {
         info = 1,
         ship = 2,
@@ -20,25 +21,47 @@ export default function CheckoutStages() {
         done = 4
     }
 
+    const getUserInfo = () => {
+        const userDetails = (localStorage.getItem('userInfo')) as string
+        const userDetailsParsed = JSON.parse(userDetails)
+        if (userDetails === null) {
+            return {
+                name: 'user',
+                email: 'email',
+                mobNum: 0o0,
+                adr: '123 me',
+                adr1: 0o0,
+                adr2: '123 me',
+            }
+        }
+        else {
+            return {
+                name: userDetailsParsed.name,
+                email: userDetailsParsed.email,
+                mobNum: userDetailsParsed.mobNum,
+                adr: userDetailsParsed.adr,
+                adr1: userDetailsParsed.adr1,
+                adr2: userDetailsParsed.adr2,
+            }
+        }
+    }
+
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
     const [orderTotal, setOrderTotal] = useState(totalPrice(cartItems))
     const [arrivalDate, setArrivalDate] = useState('')
-    const [userInfo, setUserInfo] = useState({
-        name: 'user',
-        email: 'email',
-        mobNum: 0o0,
-        adr: '123 me',
-    }
-    )
+    const [processingDisplay, setprocessingDisplay] = useState(true)
+    const [userInfo, setUserInfo] = useState(getUserInfo)
 
-    // function usePrevious(value: any):number {
-    //     const ref = useRef();
-    //     useEffect(() => {
-    //       ref.current = value;
-    //     }, [value])
-    //     return ref.current;
-    //   }
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+
+    useEffect(() => {
+        return () => {
+            getUserInfo();
+        }
+    },
+        [userInfo],
+    )
 
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
@@ -48,6 +71,8 @@ export default function CheckoutStages() {
             email: e.target[1].value,
             mobNum: e.target[2].value,
             adr: e.target[3].value,
+            adr1: e.target[4].value,
+            adr2: e.target[5].value,
         }
         setUserInfo(snapInfo)
         setCurrentStage(Stages.ship)
@@ -58,12 +83,8 @@ export default function CheckoutStages() {
         setOrderTotal(orderTotal + value[0])
         setArrivalDate(value[1])
     }
-    const pay = () => {
-        setCurrentStage(Stages.done)
-        setCart([])
-    }
+
     useEffect(() => {
-        console.log('UPDATE')
         return () => {
             displayPage();
         }
@@ -71,12 +92,11 @@ export default function CheckoutStages() {
         [currentStage],
     );
 
-    // const finalCost = usePrevious(orderTotal)
     const displayPage = () => {
-        let displayPage = <UserInfo SubmitForm={onSubmit} />
+        let displayPage = <UserInfo userInfo={userInfo} SubmitForm={onSubmit} />
         switch (currentStage) {
             case Stages.info:
-                displayPage = <UserInfo SubmitForm={onSubmit} />
+                displayPage = <UserInfo userInfo={userInfo} SubmitForm={onSubmit} />
                 break;
             case Stages.ship:
                 displayPage = <Shipping ship={ship} />
@@ -89,24 +109,54 @@ export default function CheckoutStages() {
         return displayPage
     }
 
+    const pay = () => {
+        setCurrentStage(Stages.done)
+        const promisePay = new Promise((accept, reject) => {
+            console.log('check')
+            setTimeout(() => {
+                accept('')
+            }, 5000); // accept after 5 second
+        })
+
+        const processPayment = () => {
+            promisePay
+                .then((accept) => {
+                    console.log('accept:', accept);
+                })
+                .catch((error) => {
+                    console.log('error:', error);
+                })
+                .finally(() => {
+                    setCart([])
+                    setprocessingDisplay(false)
+                })
+        }
+        processPayment()
+    }
+
     if (currentStage === Stages.done) {
-        return (
-            <Grommet theme={theme} >
-                <StepsDiagram stageNum={currentStage} ></StepsDiagram>
-                <Done userSnap={userInfo} />
-            </Grommet >)
+        while (processingDisplay) {
+            return (
+
+                <Box pad='none' margin='none' height='medium' align='center' >
+                    <Image fit='contain' src={loader} />
+                </Box>
+            )
+        }
+        return <Grommet theme={theme} >
+            <Done arrivalDate={arrivalDate} />
+        </Grommet >
     }
     return (
         <Grommet theme={theme} >
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
-
-            <Box animation='fadeIn' direction='row-responsive' justify='center' align='start' >
+            <Box animation='fadeIn' direction='row' wrap={true} justify='center' align='start' >
                 <Box width='medium' flex={{ grow: 0 }} align='center'>
                     <CartSummary
                         stageNum={currentStage}
                         userSnap={userInfo}
                         arrivalDate={arrivalDate}
-                        orderCost={ orderTotal }
+                        orderCost={orderTotal}
                         totalItems={numItems(cartItems)}
                     />
                 </Box>
