@@ -9,7 +9,6 @@ export default function Checkout() {
             <CollapsibleNav showCart={true} />
             <CheckoutStages></CheckoutStages>
             <FooterSection />
-
         </>
     )
 }

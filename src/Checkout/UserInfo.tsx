@@ -2,27 +2,63 @@ import React from 'react'
 import { Box, Button, Form, FormField, TextArea } from 'grommet'
 import { LinkNext } from 'grommet-icons'
 import { CancelButton } from './testing'
-
 interface Props {
+    userInfo: {
+        name: string,
+        email: string,
+        mobNum: number,
+        adr: string,
+        adr1: number,
+        adr2: string,
+    }
     SubmitForm: (((event: React.FormEvent<Element>) => void) & ((event: React.FormEvent<HTMLFormElement>) => void))
 }
 export const UserInfo = (props: Props) => {
     return (
         <Box align="center" justify="center" >
             <Form onSubmit={props.SubmitForm} >
-                <Box pad='small' direction='row-responsive'>
+                <Box pad='xsmall' direction='row-responsive'>
                     <FormField
-                        pad={false} margin='xsmall' label="Name" name="name" validate={{ regexp: /^[a-z]/i }} />
+                        pad={false} margin='xsmall' label="Name" name="name"
+                        value={props.userInfo.name}
+                        validate={[
+                            { regexp: /^[a-z]/i },
+                            name => {
+                                if (name && name.length === 1) return "must be >1 character";
+                                return undefined;
+                            }]} required />
                     <FormField pad={false} margin='xsmall' label="Email" name="email" type="email"
-                        value={'me@user.com'}
+                        value={props.userInfo.email}
+                        onClick={(e) => (e.currentTarget.value = '')} />
+                    <FormField pad={false} margin='xsmall'
+                        label="Mobile Number" name="Mobile number" value={props.userInfo.mobNum}
+                        required
+                        validate={{ regexp: /^[0-9]{10}$/, message: '10 digits' }}
+                        onClick={(e) => (e.currentTarget.value = '')}
+                    />
+                </Box>
+                <Box pad='xsmall'>
+                    <FormField pad={false} margin='none' label="Street Address" name="address"
+                        value={props.userInfo.adr}
+                        validate={{ regexp: /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/, message: 'no special characters allowed' }}
+                        required />
+                </Box>
+                <Box pad='xsmall' direction='row-responsive'>
+                    <FormField
+                        pad={false} margin='xsmall' label="Post Code" name="address1"
+                        value={props.userInfo.adr1}
+                        validate={{ regexp: /^[0-9]{5}$/, message: '5 digits' }} required />
+                    <FormField pad={false} margin='xsmall' label="City" name="address2"
+                        value={props.userInfo.adr2}
+                        validate={[
+                            { regexp: /^[a-z]/i },
+                            name => {
+                                if (name && name.length === 1) return "must be >1 character";
+                                return undefined;
+                            }]}
                         onClick={(e) => (e.currentTarget.value = '')} />
                 </Box>
-                <FormField pad={false} margin='xsmall'
-                    label="Mobile Number" name="Mobile number" value={1234567890}
-                    validate={{ regexp: /^[0-9]{10}$/, message: '10 digits' }}
-                    onClick={(e) => (e.currentTarget.value = '')}
-                />
-                <FormField pad={false} margin='xsmall' label="Address" name="address" component={TextArea} />
+
                 <Box direction="row" wrap={true} justify='evenly' margin={{ top: 'small' }} gap='small'>
                     <CancelButton />
                     <Button type="reset" label="Reset" size='small' alignSelf='center' />

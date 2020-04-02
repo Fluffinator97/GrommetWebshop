@@ -10,8 +10,6 @@ export const EmptyCart = ({
         <Grommet >
             <ResponsiveContext.Consumer>
                 {size => {
-
-                    console.log(size)
                     return (
                         <Grommet theme={theme}>
                             <Grid
@@ -19,7 +17,6 @@ export const EmptyCart = ({
                                     count: 1,
                                     size: 'auto',
                                 }}
-
                                 align='center'
                                 justify='center'
                                 gap="medium"
@@ -33,7 +30,6 @@ export const EmptyCart = ({
                                             reverse={true}
                                             icon={<LinkNext />}
                                             label='Let`s fill it up! '
-
                                             margin='small'
                                         />
 
