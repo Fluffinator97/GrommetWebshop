@@ -23,13 +23,11 @@ function CardDetails(props: Props) {
                         Card number
                         <MaskedInput
                             mask={[
-
                                 {
                                     length: 4,
                                     regexp: /^[0-9]{1,4}$/,
                                     placeholder: "xxxx"
                                 },
-
                                 { fixed: " " },
                                 {
                                     length: 4,
@@ -63,7 +61,6 @@ function CardDetails(props: Props) {
                                     regexp: /^[0-9]{1,3}$/,
                                     placeholder: "xxx"
                                 },
-
                             ]}
                             value={cvvValue}
                             onChange={event => setCvvValue(event.target.value)}
@@ -98,10 +95,6 @@ function CardDetails(props: Props) {
                     <FinishBuyButton />
                 </Box>
             </Box>
-
-
-
-
         </Form>
     )
 }

@@ -12,15 +12,12 @@ const renderPanelHeader = (title: {}, active: boolean) => (
         <Text color="brand">{active ? "-" : "+"}</Text>
     </Box>
 )
-
 interface Props {
     userSnap: { name: string; mobNum: number; email: string }
     SubmitForm: (((event: React.FormEvent<Element>) => void) & ((event: React.FormEvent<HTMLFormElement>) => void))
 }
 export const Payment = (props: Props) => {
     const [activeIndex, setActiveIndex] = useState([0]);
-
-    console.log(props.userSnap.email)
     return (
         <Grommet theme={theme}>
             <Accordion
@@ -30,7 +27,6 @@ export const Payment = (props: Props) => {
                 <AccordionPanel
                     header={renderPanelHeader("Card", activeIndex.includes(0))}
                 >
-
                     <Box pad="medium" >
                         <CardDetails userName={props.userSnap.name} SubmitForm={props.SubmitForm} />
                     </Box>
@@ -40,7 +36,6 @@ export const Payment = (props: Props) => {
                 >
                     <Form onSubmit={props.SubmitForm}>
                         <Box pad='small' direction='row' wrap={true} align='center'>
-
                             <Box direction='row' justify='evenly' align='center'>
                                 <Text >Mobile Num : </Text>
                                 <FormField pad={false} margin='xsmall'
@@ -74,5 +69,5 @@ export const Payment = (props: Props) => {
                 </AccordionPanel>
             </Accordion>
         </Grommet >
-    );
-};
+    )
+}

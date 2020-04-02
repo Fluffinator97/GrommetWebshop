@@ -20,18 +20,52 @@ export default function CheckoutStages() {
         pay = 3,
         done = 4
     }
+
+    
+const getUserInfo = ()=>{
+    const userDetails = (localStorage.getItem('userInfo')) as string
+    const userDetailsParsed = JSON.parse(userDetails)
+    if(userDetails === null){
+        return {
+            name: 'user',
+            email: 'email',
+            mobNum: 0o0,
+            adr: '123 me',
+            adr1: 0o0,
+            adr2: '123 me',
+        }
+    }
+    else{
+        console.log(userDetailsParsed, 'i reached')
+
+        return {
+            name: userDetailsParsed.name,
+            email: userDetailsParsed.email,
+            mobNum: userDetailsParsed.mobNum,
+            adr: userDetailsParsed.adr,
+            adr1: userDetailsParsed.adr1,
+            adr2: userDetailsParsed.adr2,
+        }
+    }
+}
+
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
     const [orderTotal, setOrderTotal] = useState(totalPrice(cartItems))
     const [arrivalDate, setArrivalDate] = useState('')
     const [processingDisplay, setprocessingDisplay] = useState(true)
-    const [userInfo, setUserInfo] = useState({
-        name: 'user',
-        email: 'email',
-        mobNum: 0o0,
-        adr: '123 me',
-    }
+    const [userInfo, setUserInfo] = useState(getUserInfo)
+
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    
+    useEffect(() => {
+        return () => {
+            getUserInfo();
+        }
+    },
+        [userInfo],
     )
+
 
     const onSubmit = (e: { preventDefault: () => void; target: any }) => {
         e.preventDefault()
@@ -41,6 +75,8 @@ export default function CheckoutStages() {
             email: e.target[1].value,
             mobNum: e.target[2].value,
             adr: e.target[3].value,
+            adr1: e.target[4].value,
+            adr2: e.target[5].value,
         }
         setUserInfo(snapInfo)
         setCurrentStage(Stages.ship)
@@ -61,10 +97,10 @@ export default function CheckoutStages() {
     );
 
     const displayPage = () => {
-        let displayPage = <UserInfo SubmitForm={onSubmit} />
+        let displayPage = <UserInfo userInfo={userInfo} SubmitForm={onSubmit} />
         switch (currentStage) {
             case Stages.info:
-                displayPage = <UserInfo SubmitForm={onSubmit} />
+                displayPage = <UserInfo userInfo={userInfo} SubmitForm={onSubmit} />
                 break;
             case Stages.ship:
                 displayPage = <Shipping ship={ship} />

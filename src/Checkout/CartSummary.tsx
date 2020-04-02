@@ -14,7 +14,6 @@ function CartSummary(props: Props) {
         <Box animation='fadeIn' margin='small' pad='small' justify='start' align='start' elevation='large'>
             < Heading alignSelf='center' color={'brand'} level={4}>Your Cart</Heading>
             <Box pad='medium'>
-
                 <Box width='small' justify='between' direction='row-responsive'>
                     <Text>{props.totalItems} items</Text>
                     <Text color='brand'>{(props.orderCost).toFixed(2)} SEK</Text>
@@ -22,13 +21,11 @@ function CartSummary(props: Props) {
                 <Box style={props.stageNum >= 2 ? { display: 'block' } : { display: 'none' }}>
                     <Text>Deliver To:</Text>
                     <Text>{props.userSnap.name} <br /> {props.userSnap.adr}  <br /> {props.userSnap.mobNum}</Text>
-                </Box>
-            
+                </Box>  
                 <Box style={props.stageNum >= 3 ? { display: 'block' } : { display: 'none' }}>
                     <Text>Reaches you:</Text>
                     <Text> {props.arrivalDate}</Text>
                 </Box>
-
             </Box>
         </Box>
     )
