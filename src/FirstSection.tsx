@@ -73,14 +73,11 @@ export default function FirstSection() {
                 <Box 
                 justify='center'
                 alignSelf='center'
-                style={{maxWidth: '50%'}}
-                >
+                style={{maxWidth: '50%'}}>
                     {/* <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '80%'}}/> */}
-                    <Carousel fill
-                    >
+                    <Carousel fill>
                     <Image fit="cover"  style={{width: '100%', height: '100%'}} src={'./assets/08.jpg'} />
                     <Image fit="cover" style={{width: '100%', height: '100%'}} src={'./assets/25.jpg'} />
-                   
                 </Carousel>
                 </Box>
                 <Box 

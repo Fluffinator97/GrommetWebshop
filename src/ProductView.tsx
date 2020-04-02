@@ -27,7 +27,7 @@ interface Props {
 }
 
 export default function ProductView() {
-    
+
     return (
         <Grommet theme={customBreakpoints}>
             <Box direction='row-responsive'
@@ -50,16 +50,22 @@ export default function ProductView() {
                 </Carousel>
                 </Box>
                 <Box
-                justify='center'
-                alignContent='center'
+                align='center'
                 style={{width: '50%'}}
                 >
                 <Heading level='3' color='brand'>Wooden Forge</Heading>
+                
+                <Heading level='4' color='brand'>2495 kr</Heading>
 
-
+                <Box 
+                align="center" 
+                pad="medium">
+                    <Button label="Add to cart" onClick={() => {}} />
+                </Box>
+                
                 </Box>
                 <Box >
-                    <Heading level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
+                    <Heading level='2'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design. The price is 2495kr.</Heading>
                 </Box>
 
             </Box>
