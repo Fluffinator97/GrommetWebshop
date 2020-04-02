@@ -46,8 +46,7 @@ export default function ProductView(props: Props) {
             style={{flexWrap: 'wrap'}}
         >
             <Box 
-                justify='center'
-                alignSelf='center'
+ 
                 border='all'
                 
                 style={{width: '50%', height: '50%' , marginRight: '20px', flexWrap: 'wrap'}}
