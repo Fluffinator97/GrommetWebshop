@@ -21,7 +21,7 @@ const CollapsibleNav = (props: Props) => (
     <ResponsiveContext.Consumer>
         {responsive =>
             responsive === "small" ? (
-                <Header background="brand" pad="medium">
+                <Header background="brand" pad="medium" >
                     <Box direction="row">
                         <Menu
                             label="Categories"

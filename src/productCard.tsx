@@ -31,8 +31,7 @@ export default function ProductCard(props: Props) {
     }
   }
   return (
-    <Link to={"/product/" + props.id}
-    >
+    <Link to={"/product/" + props.id} style={{ textDecoration: 'none', color: 'white' }}>
       <Box
         fill
         elevation="large"

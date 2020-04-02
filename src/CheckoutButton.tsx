@@ -19,6 +19,8 @@ export const CheckoutButton = (props: Props) => {
                     hoverIndicator={{ size: 'large' }}
                     icon={<Shop size='medium' />}
                     label={props.showLabel ? 'My Cart' : ''}
+                    primary
+                    color="brand"
                 />
             </Link>
             <Box
