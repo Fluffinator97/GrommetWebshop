@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grommet, Box, Heading } from "grommet";
+import { Grommet, Box, Heading, Nav } from "grommet";
 import { deepMerge } from "grommet/utils";
 import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
@@ -51,12 +51,17 @@ export default function MainGrid() {
                 const products = categories[name]
                 return (
                     <Box>
+                        <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
                         <Heading
-                        margin={{'left': 'medium'}}
+                        // margin={{'left': 'medium'}}
+                        
+                       
                         >
                         {name.toUpperCase()}
                        
                         </Heading>
+                        </Nav>
+                        
                         <ResponsiveGrid
                             gap="medium"
                             margin="medium"
