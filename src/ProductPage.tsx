@@ -9,7 +9,7 @@ export default function ProductPage() {
     return (
         <>
             <CollapsibleNav showCart={true}/>
-            <HomePage />
+            <ProductView />
             <Footer />
         </>
 
