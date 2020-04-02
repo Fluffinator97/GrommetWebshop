@@ -53,7 +53,7 @@ export default function MainGrid() {
                     <Box>
                         <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
                         <Heading
-                        // margin={{'left': 'medium'}}
+                        
                         
                        
                         >

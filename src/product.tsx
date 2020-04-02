@@ -36,10 +36,10 @@ export default function Product(props: Props) {
     justify="center"
     align="center"
      >
-        <Heading margin="none">{props.name}</Heading>
+        <Heading margin="none" level='3'>{props.name}</Heading>
         <Image fit='cover' src={props.img} alt="" style={{width: '100%', maxHeight: '100%' }}/>
         <p>{props.price} kr</p>
-        {/* <p>{props.description}</p> */}
+        
         <Button onClick={addToCart} />
     </Box>
     
