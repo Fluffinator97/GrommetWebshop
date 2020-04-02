@@ -53,8 +53,8 @@ export default function ProductView(props: Props) {
             >
                 {/* <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '80%'}}/> */}
                 <Carousel fill>
-                <Image fit="cover"  style={{width: '100%', height: '100%'}} src={'./assets/08.jpg'} />
-                <Image fit="cover" style={{width: '100%', height: '100%'}} src={'./assets/25.jpg'} />
+                <Image fit="cover"  style={{width: '100%', height: '100%'}} src={props.product.img} />
+                <Image fit="cover" style={{width: '100%', height: '100%'}} src={props.product.img} />
                 </Carousel>
             </Box>
             <Box
