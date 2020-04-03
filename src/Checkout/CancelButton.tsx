@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Button, Grommet, Heading, Layer, Select, Text } from "grommet";
+import { Box, Button, Grommet, Layer, Text } from "grommet";
 import { theme } from "../index";
 import { Link } from "react-router-dom";
 

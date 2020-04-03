@@ -138,12 +138,12 @@ export default function CheckoutStages() {
     if (currentStage === Stages.done) {
         while (processingDisplay) {
             return (
-                <>
+                <Box style={{pointerEvents:'none'}}>
                     <CollapsibleNav showCart={false} showMenu={false} />
                     <Box pad='none' margin='none' height='medium' align='center' >
                         <Image fit='contain' src={loader} />
                     </Box>
-                </>
+                </Box>
             )
         }
         return <Grommet theme={theme} >

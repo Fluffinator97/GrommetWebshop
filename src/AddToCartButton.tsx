@@ -1,4 +1,4 @@
-import React, { useState, PropsWithChildren, CSSProperties } from 'react'
+import React from 'react'
 import { Cart } from 'grommet-icons'
 import { Button } from "grommet";
 

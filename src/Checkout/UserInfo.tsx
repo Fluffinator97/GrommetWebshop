@@ -1,7 +1,7 @@
 import React from 'react'
-import { Box, Button, Form, FormField, TextArea } from 'grommet'
+import { Box, Button, Form, FormField } from 'grommet'
 import { LinkNext } from 'grommet-icons'
-import { CancelButton } from './testing'
+import { CancelButton } from './CancelButton'
 interface Props {
     userInfo: {
         name: string,

@@ -17,7 +17,7 @@ export const CheckoutButton = (props: Props) => {
         <Stack anchor="top-left" >
             <Link to='/MyCart'>
                 <Button
-                   
+                   focusIndicator={false}
                     icon={<Shop size='medium' />}
                     label={props.showLabel ? 'My Cart' : ''}
                     primary

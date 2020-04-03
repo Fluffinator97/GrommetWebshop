@@ -18,7 +18,7 @@ export default function CheckoutCart() {
     }
     const arrayRemove = (arr: any[], value: any) => {
         return arr.filter(function (ele: any) {
-            return ele != value
+            return ele !== value
         })
     }
     const removeFromCart = (data: number) => {

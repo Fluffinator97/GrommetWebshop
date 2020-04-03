@@ -6,6 +6,7 @@ import postnordIcon from '../assets/postnord.png'
 import ShippingOptions from './ShippingOptions'
 import { LinkNext } from 'grommet-icons'
 import { reachesYou } from './ShippingOptions'
+import { CancelButton } from './CancelButton'
 
 interface Props {
     ship: any
@@ -95,11 +96,17 @@ export default function Shipping(props: Props) {
                     onChange={event => setValue(event.target.value)}
                 />
             </Box>
-            <Box animation='pulse' pad={{ top: 'small' }} justify='end'>
-                <Button
-                    reverse={true} icon={<LinkNext size='small' />}
-                    label="Next" size='small' primary
-                    onClick={(e) => { props.ship(getShipPrice(value)) }} />
+
+            <Box direction='row' wrap={true} justify='evenly' margin={{ top: 'small' }} gap='small'>
+
+                <CancelButton />
+
+                <Box animation='pulse'>
+                    <Button
+                        reverse={true} icon={<LinkNext size='small' />}
+                        label="Next" size='small' primary
+                        onClick={(e) => { props.ship(getShipPrice(value)) }} />
+                </Box>
             </Box>
         </Box>
     )

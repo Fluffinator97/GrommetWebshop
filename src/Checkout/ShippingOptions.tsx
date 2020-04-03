@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Box, Heading, Image, Text } from 'grommet'
 
 interface Props {
