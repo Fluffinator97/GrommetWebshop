@@ -23,7 +23,7 @@ export const CancelButton = () => {
               justify='center'
               pad={{ top: "medium", bottom: "small" }}
             >
-              <Link to='/My Cart'>
+              <Link to='/MyCart'>
               <Button label="Yes" color="dark-3" /></Link>
               <Button
                 label={
