@@ -10,16 +10,22 @@ import {
 } from "grommet";
 
 import { CheckoutButton } from "./CheckoutButton";
-import { Link, Redirect } from "react-router-dom";
-import MyCart from "./Checkout/MyCart";
-import { link } from "fs";
-
+import { Link} from "react-router-dom";
 
 interface Props {
     showCart: boolean
 }
 
-const CollapsibleNav = (props: Props) => (
+const scrollToElement = (name: any) => {
+    let element = document.querySelector(`#${name}`)
+    if(element){
+        element.scrollIntoView()
+    }
+}
+const CollapsibleNav = (props: Props) => {
+    
+   return (
+  
     <ResponsiveContext.Consumer>
         {responsive =>
             responsive === "small" ? (
@@ -28,11 +34,11 @@ const CollapsibleNav = (props: Props) => (
                         <Menu
                             label="Categories"
                             items={[
-                                { label: "Beds", onClick: () => { } },
-                                { label: "Lamps", onClick: () => { } },
-                                { label: "Tables", onClick: () => { } },
-                                { label: "Carpets", onClick: () => { } },
-                                { label: "Pillows", onClick: () => { } },
+                                { label: "Beds", onClick: () => scrollToElement('beds') },
+                                { label: "Lamps", onClick: () => scrollToElement('lamps') },
+                                { label: "Tables", onClick: () => scrollToElement('tables') },
+                                { label: "Carpets", onClick: () => scrollToElement('carpets') },
+                                { label: "Pillows", onClick: () => scrollToElement('pillows') },
                                 { label: "My Cart", onClick: ()=> {} },
                             ]}
                         />
@@ -55,11 +61,11 @@ const CollapsibleNav = (props: Props) => (
                         </Link>
                         <Box direction='row' align='center' justify='stretch' >
                             <Nav direction="row" align='center'>
-                                <Anchor href="#" label="Beds" color='light-1' />
-                                <Anchor href="#" label="Lamps" color='light-1' />
-                                <Anchor href="#" label="Tables" color='light-1' />
-                                <Anchor href="#" label="Carpets" color='light-1' />
-                                <Anchor href="#" label="Pillows" color='light-1' />
+                                <Anchor onClick={()=>scrollToElement('beds')} label="Beds" color='light-1' />
+                                <Anchor onClick={()=>scrollToElement('lamps')} label="Lamps" color='light-1' />
+                                <Anchor onClick={()=>scrollToElement('tables')} label="Tables" color='light-1' />
+                                <Anchor onClick={()=>scrollToElement('carpets')} label="Carpets" color='light-1' />
+                                <Anchor onClick={()=>scrollToElement('pillows')} label="Pillows" color='light-1' />
                             </Nav>
                         </Box>
                         <span style={props.showCart ? { visibility: 'visible' } : { visibility: 'hidden' }}>
@@ -69,6 +75,6 @@ const CollapsibleNav = (props: Props) => (
                 )
         }
     </ResponsiveContext.Consumer>
-);
+);}
 
 export default CollapsibleNav
