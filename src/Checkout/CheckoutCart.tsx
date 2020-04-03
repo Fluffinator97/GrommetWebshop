@@ -35,7 +35,7 @@ export default function CheckoutCart() {
 
     const getNameandImage = (data: number) => {
         let itemInCartValues = products.find((element: { id: number }) => element.id === data)
-        if (itemInCartValues) { return [itemInCartValues.name, itemInCartValues.img] }
+        if (itemInCartValues) { return [itemInCartValues.name, itemInCartValues.img[0]] }
         else {
             return ['']
         }

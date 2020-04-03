@@ -8,7 +8,7 @@ interface Props {
   name: string,
   id: number,
   price: number,
-  img: string,
+  img: string[],
   desc?: string,
   category?: string
 }
@@ -44,7 +44,7 @@ export default function ProductCard(props: Props) {
         align="center"
       >
         <Heading margin="none" level='3'>{props.name}</Heading>
-        <Image fit='cover' src={props.img} alt="" style={{ width: '100%', maxHeight: '100%' }} />
+        <Image fit='cover' src={props.img[0]} alt="" style={{ width: '100%', maxHeight: '100%' }} />
         <p>{props.price} SEK</p>
         <Button onClick={addToCart} />
       </Box>
