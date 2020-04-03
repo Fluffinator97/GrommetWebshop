@@ -12,6 +12,7 @@ import { numItems } from '../CheckoutButton'
 import Done from './Payment/Done'
 import loader from '../assets/payment.gif'
 import '../index.css'
+import CollapsibleNav from '../CollapsibleNav'
 
 export default function CheckoutStages() {
     enum Stages {
@@ -137,18 +138,22 @@ export default function CheckoutStages() {
     if (currentStage === Stages.done) {
         while (processingDisplay) {
             return (
-
-                <Box pad='none' margin='none' height='medium' align='center' >
-                    <Image fit='contain' src={loader} />
-                </Box>
+                <>
+                    <CollapsibleNav showCart={false} showMenu={false} />
+                    <Box pad='none' margin='none' height='medium' align='center' >
+                        <Image fit='contain' src={loader} />
+                    </Box>
+                </>
             )
         }
         return <Grommet theme={theme} >
+            <CollapsibleNav showCart={true} showMenu={false} />
             <Done arrivalDate={arrivalDate} />
         </Grommet >
     }
     return (
         <Grommet theme={theme} >
+            <CollapsibleNav showCart={true} showMenu={false} />
             <StepsDiagram stageNum={currentStage} ></StepsDiagram>
             <Box animation='fadeIn' direction='row' wrap={true} justify='center' align='start' >
                 <Box width='medium' flex={{ grow: 0 }} align='center'>

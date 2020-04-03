@@ -9,7 +9,7 @@ import { Box, ResponsiveContext } from 'grommet'
 export default function HomePage() {
     return (
         <>
-            <CollapsibleNav showCart={false} />
+            <CollapsibleNav showCart={false} showMenu={true} />
             <ResponsiveContext.Consumer>
                 {responsive =>
                     responsive === "small" ? (

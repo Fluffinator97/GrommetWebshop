@@ -14,6 +14,7 @@ import { Link} from "react-router-dom";
 
 interface Props {
     showCart: boolean
+    showMenu: boolean
 }
 
 const scrollToElement = (name: any) => {
@@ -30,7 +31,7 @@ const CollapsibleNav = (props: Props) => {
         {responsive =>
             responsive === "small" ? (
                 <Header background="brand" pad="medium" >
-                    <Box direction="row">
+                    <Box direction="row" style={props.showMenu ? { display: 'block' } : { display: 'none' }}>
                         <Menu
                             label="Categories"
                             items={[
@@ -59,7 +60,7 @@ const CollapsibleNav = (props: Props) => {
                                 The Shop
                             </Box>
                         </Link>
-                        <Box direction='row' align='center' justify='stretch' >
+                        <Box direction='row' align='center' justify='stretch' style={props.showMenu ? { display: 'block' } : { display: 'none' }}>
                             <Nav direction="row" align='center'>
                                 <Anchor onClick={()=>scrollToElement('beds')} label="Beds" color='light-1' />
                                 <Anchor onClick={()=>scrollToElement('lamps')} label="Lamps" color='light-1' />

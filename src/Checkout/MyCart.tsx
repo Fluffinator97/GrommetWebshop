@@ -15,7 +15,7 @@ export default function MyCart() {
     }
     return (
         <>
-            <CollapsibleNav showCart={true} />
+            <CollapsibleNav showCart={true} showMenu={false} />
             {displayPage}
             <FooterSection />
         </>
