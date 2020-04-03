@@ -47,12 +47,15 @@ export default function CheckoutStages() {
         }
     }
 
+    
     const [cartItems, setCart] = useContext(CartContext)
     const [currentStage, setCurrentStage] = useState(Stages.info)
     const [orderTotal, setOrderTotal] = useState(totalPrice(cartItems))
     const [arrivalDate, setArrivalDate] = useState('')
     const [processingDisplay, setprocessingDisplay] = useState(true)
     const [userInfo, setUserInfo] = useState(getUserInfo)
+    const [totalItems,setTotalItems]= useState(numItems(cartItems))
+    const [cartHistory, setCartHistory] = useState({ totalItems, orderTotal, arrivalDate })
 
     localStorage.setItem('userInfo', JSON.stringify(userInfo))
 
@@ -123,6 +126,7 @@ export default function CheckoutStages() {
             promisePay
                 .then((accept) => {
                     console.log('accept:', accept);
+                    setCartHistory({ totalItems, orderTotal, arrivalDate })
                 })
                 .catch((error) => {
                     console.log('error:', error);
@@ -138,7 +142,7 @@ export default function CheckoutStages() {
     if (currentStage === Stages.done) {
         while (processingDisplay) {
             return (
-                <Box style={{pointerEvents:'none'}}>
+                <Box style={{ pointerEvents: 'none' }}>
                     <CollapsibleNav showCart={false} showMenu={false} />
                     <Box pad='none' margin='none' height='medium' align='center' >
                         <Image fit='contain' src={loader} />
@@ -148,7 +152,7 @@ export default function CheckoutStages() {
         }
         return <Grommet theme={theme} >
             <CollapsibleNav showCart={true} showMenu={false} />
-            <Done arrivalDate={arrivalDate} />
+            <Done arrivalDate={arrivalDate} cartHistory={cartHistory} />
         </Grommet >
     }
     return (
