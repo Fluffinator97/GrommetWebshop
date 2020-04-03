@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.093bd48c.chunk.css",
-    "main.js": "/static/js/main.1e8c69bd.chunk.js",
-    "main.js.map": "/static/js/main.1e8c69bd.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.2d03760f.js",
-    "runtime-main.js.map": "/static/js/runtime-main.2d03760f.js.map",
-    "static/js/2.d3482e86.chunk.js": "/static/js/2.d3482e86.chunk.js",
-    "static/js/2.d3482e86.chunk.js.map": "/static/js/2.d3482e86.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.59de0ea4b2165e0a4b9a3bf12d4ebe5f.js": "/precache-manifest.59de0ea4b2165e0a4b9a3bf12d4ebe5f.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.093bd48c.chunk.css.map": "/static/css/main.093bd48c.chunk.css.map",
-    "static/js/2.d3482e86.chunk.js.LICENSE.txt": "/static/js/2.d3482e86.chunk.js.LICENSE.txt",
-    "static/media/dhl.png": "/static/media/dhl.3e4746d9.png",
-    "static/media/payment.gif": "/static/media/payment.285dd376.gif",
-    "static/media/shopping_cart.svg": "/static/media/shopping_cart.36732f8e.svg",
-    "static/media/successful_purchase.svg": "/static/media/successful_purchase.881433d0.svg"
+    "main.css": "/webshop/static/css/main.093bd48c.chunk.css",
+    "main.js": "/webshop/static/js/main.1e8c69bd.chunk.js",
+    "main.js.map": "/webshop/static/js/main.1e8c69bd.chunk.js.map",
+    "runtime-main.js": "/webshop/static/js/runtime-main.0763743a.js",
+    "runtime-main.js.map": "/webshop/static/js/runtime-main.0763743a.js.map",
+    "static/js/2.2a697fbd.chunk.js": "/webshop/static/js/2.2a697fbd.chunk.js",
+    "static/js/2.2a697fbd.chunk.js.map": "/webshop/static/js/2.2a697fbd.chunk.js.map",
+    "index.html": "/webshop/index.html",
+    "precache-manifest.238f07aba1813e3e0e81358db3cb7fa1.js": "/webshop/precache-manifest.238f07aba1813e3e0e81358db3cb7fa1.js",
+    "service-worker.js": "/webshop/service-worker.js",
+    "static/css/main.093bd48c.chunk.css.map": "/webshop/static/css/main.093bd48c.chunk.css.map",
+    "static/js/2.2a697fbd.chunk.js.LICENSE.txt": "/webshop/static/js/2.2a697fbd.chunk.js.LICENSE.txt",
+    "static/media/dhl.png": "/webshop/static/media/dhl.3e4746d9.png",
+    "static/media/payment.gif": "/webshop/static/media/payment.285dd376.gif",
+    "static/media/shopping_cart.svg": "/webshop/static/media/shopping_cart.36732f8e.svg",
+    "static/media/successful_purchase.svg": "/webshop/static/media/successful_purchase.881433d0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d03760f.js",
-    "static/js/2.d3482e86.chunk.js",
+    "static/js/runtime-main.0763743a.js",
+    "static/js/2.2a697fbd.chunk.js",
     "static/css/main.093bd48c.chunk.css",
     "static/js/main.1e8c69bd.chunk.js"
   ]
