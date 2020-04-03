@@ -26,7 +26,7 @@ export const theme = deepMerge(grommet, {
 ReactDOM.render(
   (
     <Grommet theme={theme}>
-      <BrowserRouter>
+      <BrowserRouter basename="/webshop">
         <ErrorBoundary>
           <App />
         </ErrorBoundary>
