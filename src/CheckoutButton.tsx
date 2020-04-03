@@ -1,4 +1,4 @@
-import React, { CSSProperties, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Shop } from 'grommet-icons'
 import { Button, Box, Stack, Text } from "grommet";
 import { CartContext } from "./context/cartContext";
@@ -9,6 +9,7 @@ interface Props {
     showLabel: boolean
 }
 
+
 export const CheckoutButton = (props: Props) => {
     const [cartItems, setCart] = useContext(CartContext)
 
@@ -16,9 +17,11 @@ export const CheckoutButton = (props: Props) => {
         <Stack anchor="top-left" >
             <Link to='/MyCart'>
                 <Button
-                    hoverIndicator={{ size: 'large' }}
+                   
                     icon={<Shop size='medium' />}
                     label={props.showLabel ? 'My Cart' : ''}
+                    primary
+                    color="brand"
                 />
             </Link>
             <Box

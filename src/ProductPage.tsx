@@ -16,7 +16,7 @@ export default function ProductPage(props: Props) {
 
     return (
         <>
-            <CollapsibleNav showCart={true}/>
+            <CollapsibleNav showCart={true} showMenu={false}/>
             <ProductView product={product}/>
             <Footer />
         </>

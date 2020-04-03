@@ -1,79 +1,35 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../src/context/cartContext';
-import { Box, Button, Carousel, Heading, Image, Grommet } from "grommet";
-import { deepMerge } from "grommet/utils";
-import { grommet } from "grommet/themes";
-
-
-
-
-
-
-
-
-// set custom breakpoints so we can see the changes
-const customBreakpoints = deepMerge(grommet, {
-    global: {
-        breakpoints: {
-            small: {
-                value: 600
-            },
-            medium: {
-                value: 900
-            },
-            large: 3000
-        }
-    }
-});
-
- interface Props {
-     name: string,
-     price: number,
-     id: number,
-     key: number,
-     img: string,
-     products: any
- }
-
- 
-
-
-
+import React from 'react';
+import { Box, Carousel, Heading, Image } from "grommet";
 
 export default function FirstSection() {
     return (
-        <Grommet theme={customBreakpoints}>
-            <Box direction='row-responsive'
+        <Box direction='row-responsive'
+            round='medium'
             justify='center'
             align='center'
             height='medium'
             border='all'
             margin='medium'
-            >
-                <Box 
+            pad='small'
+        >
+            <Box
                 justify='center'
                 alignSelf='center'
-                style={{maxWidth: '50%'}}
-                >
-                    {/* <Image fit='contain' margin={{'top': ''}} src={'./assets/agy2.jpg'} alt="" style={{maxWidth: '80%'}}/> */}
-                    <Carousel fill
-                    >
-                    <Image fit="cover"  style={{width: '100%', height: '100%'}} src={'./assets/woodenforge.jpg'} />
-                    <Image fit="cover" style={{width: '100%', height: '100%'}} src={'./assets/woodenforge2.jpg'} />
-                   
+                style={{ maxWidth: '50%' }}
+            >
+                <Carousel fill play={5000}>
+                    <Image fit="contain" style={{ width: '100%', height: '100%' }} src={'./assets/woodenforge.jpg'} />
+                    <Image fit="contain" style={{ width: '100%', height: '100%' }} src={'./assets/woodenforge2.jpg'} />
                 </Carousel>
-                </Box>
-                <Box 
-                margin={{'left': 'large'}}
-                fill='horizontal'
-                justify='center'
-                alignContent='center'>
-                    <Heading level='3' color='brand'>Best Seller</Heading>
-                    <Heading level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
-                    
-                </Box>
+
             </Box>
-        </Grommet>
+
+            <Box fill='horizontal' justify='center' align='center'>
+                <Heading textAlign='center' level='3' color='brand'>Best Seller</Heading>
+                <Heading style={{ textAlign: 'justify' }} level='5'>The Woodenforge series is inspired by a time when new land was created and rail systems were built. It has a rustic design.The price is 2495kr.</Heading>
+            </Box>
+        </Box>
+
     );
 }
 

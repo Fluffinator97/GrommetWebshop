@@ -26,7 +26,7 @@ function CartSummary(props: Props) {
                 </Box>
                 <Box style={props.stageNum >= 3 ? { display: 'block' } : { display: 'none' }}>
                     <Text>Reaches you:</Text>
-                    <Text> {props.arrivalDate}</Text>
+                    <Text color='brand'> {props.arrivalDate}</Text>
                 </Box>
             </Box>
         </Box>

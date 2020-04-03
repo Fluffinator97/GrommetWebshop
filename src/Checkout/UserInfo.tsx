@@ -16,7 +16,7 @@ interface Props {
 export const UserInfo = (props: Props) => {
     return (
         <Box align="center" justify="center" >
-            <Form onSubmit={props.SubmitForm} >
+            <Form onSubmit={props.SubmitForm}>
                 <Box pad='xsmall' direction='row-responsive'>
                     <FormField
                         pad={false} margin='xsmall' label="Name" name="name"
@@ -26,7 +26,8 @@ export const UserInfo = (props: Props) => {
                             name => {
                                 if (name && name.length === 1) return "must be >1 character";
                                 return undefined;
-                            }]} required />
+                            }]} required 
+                            onClick={(e) => (e.currentTarget.value = '')}/>
                     <FormField pad={false} margin='xsmall' label="Email" name="email" type="email"
                         value={props.userInfo.email}
                         onClick={(e) => (e.currentTarget.value = '')} />
@@ -41,13 +42,15 @@ export const UserInfo = (props: Props) => {
                     <FormField pad={false} margin='none' label="Street Address" name="address"
                         value={props.userInfo.adr}
                         validate={{ regexp: /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/, message: 'no special characters allowed' }}
-                        required />
+                        required
+                        onClick={(e) => (e.currentTarget.value = '')} />
                 </Box>
                 <Box pad='xsmall' direction='row-responsive'>
                     <FormField
                         pad={false} margin='xsmall' label="Post Code" name="address1"
                         value={props.userInfo.adr1}
-                        validate={{ regexp: /^[0-9]{5}$/, message: '5 digits' }} required />
+                        validate={{ regexp: /^[0-9]{5}$/, message: '5 digits' }} required 
+                        onClick={(e) => (e.currentTarget.value = '')}/>
                     <FormField pad={false} margin='xsmall' label="City" name="address2"
                         value={props.userInfo.adr2}
                         validate={[
@@ -61,7 +64,6 @@ export const UserInfo = (props: Props) => {
 
                 <Box direction="row" wrap={true} justify='evenly' margin={{ top: 'small' }} gap='small'>
                     <CancelButton />
-                    <Button type="reset" label="Reset" size='small' alignSelf='center' />
                     <Box animation='pulse'>
                         <Button
                             reverse={true} icon={<LinkNext size='small' />}

@@ -35,13 +35,12 @@ export default function CheckoutCart() {
 
     const getNameandImage = (data: number) => {
         let itemInCartValues = products.find((element: { id: number }) => element.id === data)
-        if (itemInCartValues) { return [itemInCartValues.name, itemInCartValues.img] }
+        if (itemInCartValues) { return [itemInCartValues.name, itemInCartValues.img[0]] }
         else {
             return ['']
         }
-        // return [itemInCartValues[name],itemInCartValues]
     }
-    console.log(getNameandImage(3))
+
     return (
         <Grommet theme={theme}>
             <Box pad="large" wrap={true} direction='row-responsive' justify='between'>

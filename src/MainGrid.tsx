@@ -5,7 +5,7 @@ import { grommet } from "grommet/themes";
 import { ResponsiveGrid } from "./ResponsiveGrid";
 import products, { Product } from './allProducts'
 import ProductCard from './productCard';
-import {CaretDown } from 'grommet-icons';
+import Test from './test'
 
 const customBreakpoints = deepMerge(grommet, {
     global: {
@@ -32,7 +32,7 @@ const customBreakpoints = deepMerge(grommet, {
 
 export default function MainGrid() {
     const categories: { [index: string]: Product[] } = {}
-    
+
     for (const product of products) {
         const category = categories[product.category]
         // Init empty category array if not yet present
@@ -44,7 +44,7 @@ export default function MainGrid() {
         categories[product.category].push(product)
     }
     console.log(categories)
-    
+
     return (
         <Grommet theme={customBreakpoints}>
             {Object.keys(categories).map((name) => {
@@ -52,12 +52,16 @@ export default function MainGrid() {
                 return (
                     <Box>
                         <Nav direction="row" background="brand" height='40px' align='center' justify='center'>
-                        <Heading>
-                        {name.toUpperCase()}
-                       
-                        </Heading>
+
+                            <Heading id={name}>
+                                {name.toUpperCase()}
+                            </Heading>
+
+                            <Box>
+                                <Test />
+                            </Box>
                         </Nav>
-                        
+
                         <ResponsiveGrid
                             gap="medium"
                             margin="medium"

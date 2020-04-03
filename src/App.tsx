@@ -5,7 +5,7 @@ import HomePage from './HomePage';
 import { CartProvider } from './context/cartContext';
 import Checkout from './Checkout/Checkout';
 import ProductPage from './ProductPage';
-import './index.css'
+
 function App() {
   
   return (
