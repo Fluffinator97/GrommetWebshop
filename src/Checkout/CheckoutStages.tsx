@@ -27,12 +27,12 @@ export default function CheckoutStages() {
         const userDetailsParsed = JSON.parse(userDetails)
         if (userDetails === null) {
             return {
-                name: 'user',
-                email: 'email',
+                name: '',
+                email: '',
                 mobNum: 0o0,
-                adr: '123 me',
+                adr: '',
                 adr1: 0o0,
-                adr2: '123 me',
+                adr2: '',
             }
         }
         else {

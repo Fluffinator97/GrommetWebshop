@@ -21,15 +21,12 @@ export const UserInfo = (props: Props) => {
                     <FormField
                         pad={false} margin='xsmall' label="Name" name="name"
                         value={props.userInfo.name}
-                        validate={[
-                            { regexp: /^[a-z]/i },
-                            name => {
-                                if (name && name.length === 1) return "must be >1 character";
-                                return undefined;
-                            }]} required 
-                            onClick={(e) => (e.currentTarget.value = '')}/>
+                        validate={{ regexp: /^[a-z]/i }}
+                        required
+                        onClick={(e) => (e.currentTarget.value = '')} />
                     <FormField pad={false} margin='xsmall' label="Email" name="email" type="email"
                         value={props.userInfo.email}
+                        required
                         onClick={(e) => (e.currentTarget.value = '')} />
                     <FormField pad={false} margin='xsmall'
                         label="Mobile Number" name="Mobile number" value={props.userInfo.mobNum}
@@ -49,16 +46,12 @@ export const UserInfo = (props: Props) => {
                     <FormField
                         pad={false} margin='xsmall' label="Post Code" name="address1"
                         value={props.userInfo.adr1}
-                        validate={{ regexp: /^[0-9]{5}$/, message: '5 digits' }} required 
-                        onClick={(e) => (e.currentTarget.value = '')}/>
+                        validate={{ regexp: /^[0-9]{5}$/, message: '5 digits' }} required
+                        onClick={(e) => (e.currentTarget.value = '')} />
                     <FormField pad={false} margin='xsmall' label="City" name="address2"
                         value={props.userInfo.adr2}
-                        validate={[
-                            { regexp: /^[a-z]/i },
-                            name => {
-                                if (name && name.length === 1) return "must be >1 character";
-                                return undefined;
-                            }]}
+                        required
+                        validate={{ regexp: /^[a-z]/i }}
                         onClick={(e) => (e.currentTarget.value = '')} />
                 </Box>
 
