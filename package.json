@@ -1,6 +1,6 @@
 {
   "name": "webshop",
-  "home-page": "https://ms-load.github.io/webshop",
+  "homepage": "https://ms-load.github.io/webshop",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
