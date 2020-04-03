@@ -16,12 +16,11 @@ export const CancelButton = () => {
           <Box pad="medium" gap="small" width="medium">
             <Text>Are you sure?</Text>
             <Box
-              as="footer"
               gap="small"
               direction="row"
               align="center"
               justify='center'
-              pad={{ top: "medium", bottom: "small" }}
+              pad={{ top: "small", bottom: "small" }}
             >
               <Link to='/MyCart'>
               <Button label="Yes" color="dark-3" /></Link>
